@@ -56,14 +56,10 @@
                 <ul class="nav navbar-nav firstMenu style-menu">
                     <li class="dropdown">
                         <a href="#"> Управление товарами </a>
-                        <ul class="dropdown-menu style-menu nextLevel">
-                            <li class="cross-over"><a href="<?php echo URL; ?>adminMenu/databaseControl"> Управление БД  </a>
-<!--                               <ul class="dropdown-menu style-menu nextLevel">
-                                <li><a href="<?php echo URL; ?>adminMenu/controlAllNotebooks"> Tетрадь </a></li>
-                                <li><a href="<?php echo URL; ?>adminMenu/controlAllPens"> Ручку </a></li>
-                              </ul> -->
-                            <li><a href="<?php echo URL; ?>adminMenu/deleteProducts"> Удалить </a>
-                            </li>
+                        <ul class="dropdown-menu style-menu nextLevel">                            
+                            <li><a href="<?php echo URL; ?>adminMenu/addProducts"> Добавить </a></li>
+                            <li><a href="<?php echo URL; ?>adminMenu/deleteProducts"> Удалить </a></li>
+                            <li class="cross-over"><a href="<?php echo URL; ?>adminMenu/databaseControl"> Управление БД  </a></li>
                         </ul>                    
                     </li>
                     <li class="dropdown">

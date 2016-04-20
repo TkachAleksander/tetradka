@@ -11,7 +11,8 @@
 						<div class="row">
 						    <div class="input-group">
 						    	<span class="input-group-addon">Имя товара:</span>
-						    	<input type="text" class="form-control" placeholder="Тетрадь '' Укриана ''" name="product_name" required>								</div>
+						    	<input type="text" class="form-control" placeholder="Тетрадь '' Укриана ''" name="product_name" required>
+						    </div>
 						</div>
 		
 						<p><div class="row">

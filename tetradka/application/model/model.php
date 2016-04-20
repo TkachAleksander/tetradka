@@ -139,6 +139,12 @@ class Model
         return $result->fetchAll();
     }
 
+
+/***********
+    MENU
+************/
+
+
     function l1($param1){
 
         $sql = "SELECT pr.id_prod, pr.name, pr.price, pr.name_img, cat.name as category, cat.caption as nameDir 
@@ -195,9 +201,11 @@ class Model
         return $result->fetchAll();
     }
 
+
 /**********
    ADMIN
 **********/
+
 
     function is_admin(){
 
@@ -438,148 +446,17 @@ class Model
     }
 
 
+/******************
+    ADD PRODUCT
+*******************/
 
-
-
-
-
-
-
-    function addNotebook($product_name,$price,$name_img,$description,$category,$cover_type,$type_sheet,$size_notebook,$amount_in_package){
-        
-        $sql = "INSERT INTO `products` (name, price, name_img, description, category) 
-                VALUES (:product_name, :price, :name_img, :description, :category)";
-        
-            $result = $this->db->prepare($sql);
-            $parameters = array(':product_name' => $product_name, ':price' => $price, ':name_img' => $name_img, ':description' => $description , ':category' => $category );
-            $result->execute($parameters);
-
-        $sql = "SELECT code FROM `products` 
-                WHERE name = :product_name AND price = :price AND name_img = :name_img AND description = :description AND category = :category";
-        
-            $result = $this->db->prepare($sql);
-            $parameters = array(':product_name' => $product_name, ':price' => $price, ':name_img' => $name_img, ':description' => $description , ':category' => $category );
-            $result->execute($parameters);
-            $code =  $result->fetch();
-            $code = $code->code;
-
-        $sql = "INSERT INTO `more_info_notebooks` (code, cover_type, type_sheet, size_notebook, amount_in_package) 
-                VALUES ('$code', :cover_type, :type_sheet, :size_notebook, :amount_in_package)";
-
-            $result = $this->db->prepare($sql);
-            $parameters = array(':cover_type' => $cover_type, ':type_sheet' => $type_sheet , ':size_notebook' => $size_notebook, ':amount_in_package' => $amount_in_package);
-            $value = $result->execute($parameters);  
- 
-        $sql = "SELECT * FROM `name_characteristics` WHERE category = 'тетради'";
-
-            $result = $this->db->prepare($sql);
-            $result->execute(); 
-            $characteristics = $result->fetchAll();
-            $count = count($characteristics);
-        
-        $masValue = array($cover_type, $type_sheet, $size_notebook, $amount_in_package);
-
-        for ($i=0; $i<$count; $i++){
-            $attribut_name = $characteristics[$i]->name_characteristic;
-            $attribut_value = $masValue[$i];
-            $sql = "INSERT INTO `more_info` (code, attribut_name, attribut_value) 
-                    VALUES ('$code', :attribut_name, :attribut_value)"; 
-
-            $result = $this->db->prepare($sql);
-            $parameters = array(':attribut_name' => $attribut_name, ':attribut_value' => $attribut_value);
-            $result->execute($parameters); 
-        }
-
-    }
-
-    function addPen($product_name,$price,$name_img,$description,$category,$type,$color_inc,$color_body,$amount_in_package){
-        
-        $sql = "INSERT INTO `products` (name, price, name_img, description, category) 
-                VALUES (:product_name, :price, :name_img, :description, :category)";
-        
-            $result = $this->db->prepare($sql);
-            $parameters = array(':product_name' => $product_name, ':price' => $price, ':name_img' => $name_img, ':description' => $description , ':category' => $category );
-            $result->execute($parameters);
-
-        $sql = "SELECT code FROM `products` 
-                WHERE name = :product_name AND price = :price AND name_img = :name_img AND description = :description AND category = :category";
-        
-            $result = $this->db->prepare($sql);
-            $parameters = array(':product_name' => $product_name, ':price' => $price, ':name_img' => $name_img, ':description' => $description , ':category' => $category );
-            $result->execute($parameters);
-            $code =  $result->fetch();
-            $code = $code->code;
-
-        $sql = "INSERT INTO `more_info_pens` (code, type, color_inc, color_body, amount_in_package) 
-                VALUES ('$code', :type, :color_inc, :color_body, :amount_in_package)";
-
-            $result = $this->db->prepare($sql);
-            $parameters = array(':type' => $type, ':color_inc' => $color_inc , ':color_body' => $color_body, ':amount_in_package' => $amount_in_package);
-            $value = $result->execute($parameters);  
- 
-        $sql = "SELECT * FROM `name_characteristics` WHERE category = 'ручки'";
-
-            $result = $this->db->prepare($sql);
-            $result->execute(); 
-            $characteristics = $result->fetchAll();
-            $count = count($characteristics);
-        
-        $masValue = array($type, $color_inc, $color_body, $amount_in_package);
-
-        for ($i=0; $i<$count; $i++){
-            $attribut_name = $characteristics[$i]->name_characteristic;
-            $attribut_value = $masValue[$i];
-            $sql = "INSERT INTO `more_info` (code, attribut_name, attribut_value) 
-                    VALUES ('$code', :attribut_name, :attribut_value)"; 
-
-            $result = $this->db->prepare($sql);
-            $parameters = array(':attribut_name' => $attribut_name, ':attribut_value' => $attribut_value);
-            $result->execute($parameters); 
-        }
-
-    }
-
-    function addProducts($category){
-        $sql = "SELECT * FROM `name_characteristics` WHERE category = :category";
+    
+    function addProduct($category, $product_name, $price, $name_img, $description){
+        $sql = "INSERT INTO `products` (name, price, name_img, description) 
+                VALUES ( :product_name, :price, :name_img, :description)";
 
         $result = $this->db->prepare($sql);
-        $parameters = array(':category' => $category);
-        $result->execute($parameters);
-
-        return $result->fetchAll();
-
-    }
-
-    function searchProduct($code){
-        $sql = "SELECT * FROM `products` WHERE code = :code";
-
-        $result = $this->db->prepare($sql);
-        $parameters = array(':code' => $code);
-        $result->execute($parameters);
-
-        return $result->fetchAll();
-    }
-
-    function dltProduct($code){
-
-        $sql = "DELETE FROM `more_info` WHERE code = :code";
-        $result = $this->db->prepare($sql);
-        $parameters = array(':code' => $code);
-        $result->execute($parameters);
-
-        $sql = "DELETE FROM `more_info_notebooks` WHERE code = :code";
-        $result = $this->db->prepare($sql);
-        $parameters = array(':code' => $code);
-        $result->execute($parameters);
-
-        $sql = "DELETE FROM `more_info_pens` WHERE code = :code";
-        $result = $this->db->prepare($sql);
-        $parameters = array(':code' => $code);
-        $result->execute($parameters);
-
-        $sql = "DELETE FROM `products` WHERE code = :code";
-        $result = $this->db->prepare($sql);
-        $parameters = array(':code' => $code);
+        $parameters = array(':product_name' => $product_name, ':price' => $price, ':name_img' => $name_img, ':description' => $description);
         $result->execute($parameters);
 
     }

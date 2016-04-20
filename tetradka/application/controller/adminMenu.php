@@ -5,35 +5,116 @@ class AdminMenu extends Controller
 
     public function index(){}
 
-    public function controlAllNotebooks(){
+    public function controlNewOrders(){
         $is_admin = $this->model->is_admin();
 
-        if($is_admin){ 
-            $allProducts = $this->model->getAllProductsAdmin('more_info_notebooks');
+        if($is_admin){
+            $allOrders = $this->model->getRequestedOrders('обрабатывается');
     
             require APP . 'view/_templates/header_admin.php';
-            require APP . 'view/adminMenu/controlAllNotebooks.php';
+            require APP . 'view/adminMenu/controlNewOrders.php';
             require APP . 'view/_templates/footer.php'; 
         } else { 
             header("Location: " . URL);
-        }              
+        }
     }
-    public function controlAllPens(){
+
+    public function controlPackedOrders(){
         $is_admin = $this->model->is_admin();
 
-        if($is_admin){ 
-            $allProducts = $this->model->getAllProductsAdmin('more_info_pens');
+        if($is_admin){
+            $allOrders = $this->model->getRequestedOrders('собирается');
+            $secondAllOrders = $this->model->getRequestedOrders('ожидает получателя');
     
             require APP . 'view/_templates/header_admin.php';
-            require APP . 'view/adminMenu/controlAllPens.php';
+            require APP . 'view/adminMenu/controlPackedOrders.php';
             require APP . 'view/_templates/footer.php'; 
         } else { 
             header("Location: " . URL);
-        }              
+        }
     }
+
+    public function controlDeliveryOrders(){
+        $is_admin = $this->model->is_admin();
+
+        if($is_admin){
+            $allOrders = $this->model->getRequestedOrders('доставка на дом');
+    
+            require APP . 'view/_templates/header_admin.php';
+            require APP . 'view/adminMenu/controlCompletedOrders.php';
+            require APP . 'view/_templates/footer.php'; 
+        } else { 
+            header("Location: " . URL);
+        }
+    }
+
+    public function controlCancleOrders(){
+        $is_admin = $this->model->is_admin();
+
+        if($is_admin){
+            $allOrders = $this->model->getAllFromTable('orders_cancle');
+    
+            require APP . 'view/_templates/header_admin.php';
+            require APP . 'view/adminMenu/controlCancleOrders.php';
+            require APP . 'view/_templates/footer.php'; 
+        } else { 
+            header("Location: " . URL);
+        }
+    }
+
+    public function controlCompletedOrders(){
+        $is_admin = $this->model->is_admin();
+
+        if($is_admin){
+            $allOrders = $this->model->getRequestedOrders('выполнен');
+    
+            require APP . 'view/_templates/header_admin.php';
+            require APP . 'view/adminMenu/controlCompletedOrders.php';
+            require APP . 'view/_templates/footer.php'; 
+        } else { 
+            header("Location: " . URL);
+        }
+    }
+
+    public function controlDeleteOrders(){
+        $is_admin = $this->model->is_admin();
+
+        if($is_admin){
+            $allOrders = $this->model->getAllFromTable('orders_delete');
+    
+            require APP . 'view/_templates/header_admin.php';
+            require APP . 'view/adminMenu/controlCancleOrders.php';
+            require APP . 'view/_templates/footer.php'; 
+        } else { 
+            header("Location: " . URL);
+        }
+    }
+
+    public function moreAboutOrder(){
+        if (isset($_POST['id'])) {
+            $ordersInfo = $this->model->getMoreAboutOrder($_POST['id']);
+        }
+    }
+
+    public function changeStatusOther(){
+        if (isset($_POST['id'],$_POST['status'])) {
+            $this->model->changeStatusOther($_POST['id'],$_POST['status']);
+        }        
+    }
+
+    public function sendInOrderTable(){
+        if (isset($_POST['id'],$_POST['iz'],$_POST['v'])) {
+            $this->model->sendInOrderTable($_POST['id'],$_POST['iz'],$_POST['v']);
+        }          
+    }
+
+
 
 
     public function databaseControl(){
+        $is_admin = $this->model->is_admin();
+
+        if($is_admin){ 
             $allCategories = $this->model->getAllCategories();
             $allCharacteristics = $this->model->getAllCharacteristics();
             $allListCharacteristics = $this->model->getAllListCharacteristics();
@@ -41,6 +122,9 @@ class AdminMenu extends Controller
             require APP . 'view/_templates/header_admin.php';
             require APP . 'view/adminMenu/databaseControl.php';
             require APP . 'view/_templates/footer.php'; 
+        } else { 
+            header("Location: " . URL);
+        }   
     }
 
 
@@ -94,164 +178,24 @@ class AdminMenu extends Controller
 
 
 
-
     public function addProducts(){
         $is_admin = $this->model->is_admin();
 
         if($is_admin){ 
-            $allNameCharacteristics = $this->model->addProducts('тетради');
+           $categories = $this->model->getAllCategories();
     
             require APP . 'view/_templates/header_admin.php';
-            require APP . 'view/adminMenu/controlAllPens.php';
+            require APP . 'view/adminMenu/addProducts.php';
             require APP . 'view/_templates/footer.php'; 
         } else { 
             header("Location: " . URL);
         }              
     }
-
     public function addProduct(){
-        if(isset($_POST['btn_add'])){ 
-            $this->model->addProduct($_POST['product_name'],$_POST['price'],$_POST['name_img'],$_POST['description'],$_POST['category'],$_POST['characteristic']);
-            header("Location: " . URL . "adminMenu/addProducts");
-        }  
+        if (isset($_POST['btn-add-product'])){
+            $this->model->addProduct($_POST['category'],$_POST['product_name'],$_POST['price'],$_POST['name_img'],$_POST['description']);
+        } 
+        header("Location: " . URL . "adminMenu/addProducts");        
     }
 
-    public function deleteProducts(){
-        $is_admin = $this->model->is_admin();
-
-        $allProducts = $this->model->searchProduct($_POST['code']);
-
-        if(isset($_POST['btn_delete'])){ 
-            $this->model->dltProduct($_POST['code']);
-            header("Location: " . URL . "adminMenu/deleteProducts");
-        }
-
-        if($is_admin){
-            require APP . 'view/_templates/header_admin.php';
-            require APP . 'view/adminMenu/deleteProducts.php';
-            require APP . 'view/_templates/footer.php'; 
-        } else { 
-            header("Location: " . URL);
-        }              
-    }
-
-    public function addNotebook(){
-        if(isset($_POST['btn_add_notebook'])){ 
-            $this->model->addNotebook($_POST['product_name'],$_POST['price'],$_POST['name_img'],$_POST['description'],$_POST['category'],$_POST['cover_type'],$_POST['type_sheet'],$_POST['size_notebook'],$_POST['amount_in_package']);
-            header("Location: " . URL . "adminMenu/controlAllNotebooks");
-        }
-    }
-
-    public function addPen(){
-        if(isset($_POST['btn_add_pen'])){ 
-            $this->model->addPen($_POST['product_name'],$_POST['price'],$_POST['name_img'],$_POST['description'],$_POST['category'],$_POST['type'],$_POST['color_inc'],$_POST['color_body'],$_POST['amount_in_package']);
-            header("Location: " . URL . "adminMenu/controlAllPens");
-        }
-    }
-
-
-
-
-    public function controlNewOrders(){
-        $is_admin = $this->model->is_admin();
-
-        if($is_admin){
-            $allOrders = $this->model->getRequestedOrders('обрабатывается');
-    
-            require APP . 'view/_templates/header_admin.php';
-            require APP . 'view/adminMenu/controlNewOrders.php';
-            require APP . 'view/_templates/footer.php'; 
-        } else { 
-            header("Location: " . URL);
-        }
-    }
-
-    public function controlPackedOrders(){
-        $is_admin = $this->model->is_admin();
-
-        if($is_admin){
-            $allOrders = $this->model->getRequestedOrders('собирается');
-            $secondAllOrders = $this->model->getRequestedOrders('ожидает получателя');
-    
-            require APP . 'view/_templates/header_admin.php';
-            require APP . 'view/adminMenu/controlPackedOrders.php';
-            require APP . 'view/_templates/footer.php'; 
-        } else { 
-            header("Location: " . URL);
-        }
-    }
-
-    public function controlCompletedOrders(){
-        $is_admin = $this->model->is_admin();
-
-        if($is_admin){
-            $allOrders = $this->model->getRequestedOrders('выполнен');
-    
-            require APP . 'view/_templates/header_admin.php';
-            require APP . 'view/adminMenu/controlCompletedOrders.php';
-            require APP . 'view/_templates/footer.php'; 
-        } else { 
-            header("Location: " . URL);
-        }
-    }
-
-    public function controlDeliveryOrders(){
-        $is_admin = $this->model->is_admin();
-
-        if($is_admin){
-            $allOrders = $this->model->getRequestedOrders('доставка на дом');
-    
-            require APP . 'view/_templates/header_admin.php';
-            require APP . 'view/adminMenu/controlCompletedOrders.php';
-            require APP . 'view/_templates/footer.php'; 
-        } else { 
-            header("Location: " . URL);
-        }
-    }
-
-    public function controlCancleOrders(){
-        $is_admin = $this->model->is_admin();
-
-        if($is_admin){
-            $allOrders = $this->model->getAllFromTable('orders_cancle');
-    
-            require APP . 'view/_templates/header_admin.php';
-            require APP . 'view/adminMenu/controlCancleOrders.php';
-            require APP . 'view/_templates/footer.php'; 
-        } else { 
-            header("Location: " . URL);
-        }
-    }
-
-    public function controlDeleteOrders(){
-        $is_admin = $this->model->is_admin();
-
-        if($is_admin){
-            $allOrders = $this->model->getAllFromTable('orders_delete');
-    
-            require APP . 'view/_templates/header_admin.php';
-            require APP . 'view/adminMenu/controlCancleOrders.php';
-            require APP . 'view/_templates/footer.php'; 
-        } else { 
-            header("Location: " . URL);
-        }
-    }
-
-    public function moreAboutOrder(){
-        if (isset($_POST['id'])) {
-            $ordersInfo = $this->model->getMoreAboutOrder($_POST['id']);
-        }
-    }
-
-    public function changeStatusOther(){
-        if (isset($_POST['id'],$_POST['status'])) {
-            $this->model->changeStatusOther($_POST['id'],$_POST['status']);
-        }        
-    }
-
-    public function sendInOrderTable(){
-        if (isset($_POST['id'],$_POST['iz'],$_POST['v'])) {
-            $this->model->sendInOrderTable($_POST['id'],$_POST['iz'],$_POST['v']);
-        }          
-    }
 }
