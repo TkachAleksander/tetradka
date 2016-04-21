@@ -4,12 +4,12 @@
 			
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 floor-admin">
 
-				<div class="col-lg-4">
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 
 					<p class="text-center topic-admin-panel"><b>Добавить категорию</b></p>
 
 					<div class="row">
-						<div class="col-lg-10">
+						<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 
 							<p>
 							<form action="<?php echo URL; ?>adminMenu/addNewCategory" method="POST">
@@ -56,10 +56,10 @@
 					</div>
 				</div>
 
-				<div class="col-lg-4">
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 					<p class="text-center topic-admin-panel"><b>Добавить характеристики</b></p>
 
-					<div class="col-lg-10">
+					<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 						<p>
 						<form action="<?php echo URL; ?>adminMenu/addNewCharact" method="POST">
 							<div class="row btn-admin-add-anythin">
@@ -101,10 +101,10 @@
 					</div>
 				</div>
 
-				<div class="col-lg-4">
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 					<p class="text-center topic-admin-panel"><b>Связать категорию с характеристиками</b></p>
 
-					<div class="col-lg-10">
+					<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 						<p>
 						<form action="<?php echo URL; ?>adminMenu/addNewListCharact" method="POST">
 							<div class="row btn-admin-add-anythin">
@@ -153,7 +153,7 @@
 
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 floor-admin">
 
-				<div class="col-lg-4">
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 					<table class="table table-bordered table-categories">
          				<tr id="th-basket" class="active">
          					<th class="text-center">ID</th>
@@ -172,7 +172,7 @@
        				</table>
 				</div>
 
-				<div class="col-lg-4">
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 					<table class="table table-bordered table-categories">
          				<tr id="th-basket" class="active">
          					<th class="text-center">ID</th>
@@ -189,7 +189,7 @@
        				</table>					
 				</div>
 
-				<div class="col-lg-4">
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 					<table class="table table-bordered table-categories">
          				<tr id="th-basket" class="active">
          					<th class="text-center">ID</th>

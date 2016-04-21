@@ -17,7 +17,7 @@ $(document).ready(function() {
 		showAnimationAddInCart();
 		addInCookie($name, $photo, $code, $price, $category, $dir);
 	});
-	
+
 	jQuery(function($) {$('#phone').mask('+38(999) 999-99-99'); });  
 });
 
@@ -261,4 +261,40 @@ function sendInOrderTable(id,iz,v){
 		}
 	});
 		location.reload();	
+}
+
+/*
+** addProducts --------------------------------------------------------------------------------------------
+*/
+
+/* функция вызывается в файле bootstrap-select.js 477 строка*/
+function getCharacterisrics(){ 
+	var id = $('#getCategory').val();
+
+	if (id != 0){
+		$.ajax({
+			type: "POST",
+			url: "/adminMenu/getCharacterisrics",
+			data: { id: id},
+			dataType: "json",
+			success: function(data){
+
+				$('.addCharact').empty();
+				$('.addCaption').empty();
+
+				for(var i = 0; i < data.length; i++){
+					$('.addCharact').append(
+						'<p><div class="input-group">'+
+							'<span class="input-group-addon"><b>></b> '+data[i].name+':</span>'+
+							'<input type="text" class="form-control" name="characteristics['+i+']" required>'+
+						'</div></p>');
+					$('.addCaption').append(
+						'<p><div class="input-group">'+
+							'<span class="input-group-addon">caption:</span>'+
+							'<input type="text" class="form-control" name="captions['+i+']" required>'+
+					'	</div></p>');
+					}
+			}	
+		});
+	}
 }

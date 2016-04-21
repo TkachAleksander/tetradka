@@ -183,6 +183,8 @@ class AdminMenu extends Controller
 
         if($is_admin){ 
            $categories = $this->model->getAllCategories();
+           $products = $this->model->getAllProductsAdmin();
+           $products_characteristics = $this->model->getAllProductCharacteristics();
     
             require APP . 'view/_templates/header_admin.php';
             require APP . 'view/adminMenu/addProducts.php';
@@ -192,10 +194,21 @@ class AdminMenu extends Controller
         }              
     }
     public function addProduct(){
-        if (isset($_POST['btn-add-product'])){
-            $this->model->addProduct($_POST['category'],$_POST['product_name'],$_POST['price'],$_POST['name_img'],$_POST['description']);
+        if (isset($_POST['btn-add-products'])){
+            $this->model->addProduct($_POST['category'],$_POST['product_name'],$_POST['price'],$_POST['name_img'],$_POST['description'],$_POST['characteristics'],$_POST['captions']);
         } 
         header("Location: " . URL . "adminMenu/addProducts");        
+    }
+    public function addProductCharacteristics(){
+        if (isset($_POST['btn-add-products'])){
+            $this->model->addProductCharacteristics($_POST['charact']);
+        } 
+        header("Location: " . URL . "adminMenu/addProducts");            
+    }
+
+
+    public function getCharacterisrics(){
+        $this->model->getCharacterisrics($_POST['id']);
     }
 
 }

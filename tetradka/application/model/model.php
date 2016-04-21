@@ -14,7 +14,9 @@ class Model
 
     function getAllProducts(){
 
-        $sql = "SELECT pr.id_prod, pr.name, pr.price, pr.name_img, cat.name as category, cat.caption as nameDir FROM `products` `pr` JOIN `category` `cat` ON pr.id_category = cat.id_category";
+        $sql = "SELECT pr.id_prod, pr.name, pr.price, pr.name_img, cat.name as category, cat.caption as nameDir 
+                FROM `products` `pr` 
+                JOIN `category` `cat` ON pr.id_category = cat.id_category";
 
         $result = $this->db->prepare($sql);
         $result->execute();
@@ -355,14 +357,6 @@ class Model
         return $result->fetchAll();        
     }
 
-    function getAllProductsAdmin($more_info_table){
-        $sql = "SELECT * FROM `products` `pr` JOIN `".$more_info_table."` `mon` ON pr.code = mon.code  ORDER BY pr.code DESC ";
-
-        $result = $this->db->prepare($sql);
-        $result->execute();
-        return $result->fetchAll();
-    }
-
 
 /******************
  DATA BASE CONTROL
@@ -451,13 +445,78 @@ class Model
 *******************/
 
     
-    function addProduct($category, $product_name, $price, $name_img, $description){
-        $sql = "INSERT INTO `products` (name, price, name_img, description) 
-                VALUES ( :product_name, :price, :name_img, :description)";
+    function addProduct($category, $product_name, $price, $name_img, $description, $characteristics, $captions){
+        $sql = "INSERT INTO `products` (name, price, name_img, description, id_category) 
+                VALUES ( :product_name, :price, :name_img, :description, :category)";
 
         $result = $this->db->prepare($sql);
-        $parameters = array(':product_name' => $product_name, ':price' => $price, ':name_img' => $name_img, ':description' => $description);
+        $parameters = array(':product_name' => $product_name, ':price' => $price, ':name_img' => $name_img, ':description' => $description, ':category' => $category[0]);
         $result->execute($parameters);
 
+        $sql = "SELECT id_prod FROM `products` ORDER BY id_prod DESC LIMIT 1";
+        $result = $this->db->prepare($sql);
+        $result->execute();
+
+        $id_prod = $result->fetch();
+        $id_prod = $id_prod->id_prod;
+
+        $sql = "SELECT id_charact 
+                FROM `list_characteristics` 
+                WHERE id_category = :category";
+
+        $result = $this->db->prepare($sql);
+        $parameters = array(':category' => $category[0]);
+        $result->execute($parameters);
+
+        $id_characteristics = $result->fetchAll();
+
+        for ( $i=0; $i < count($id_characteristics); $i++) {
+
+            $id_charact = $id_characteristics[$i]->id_charact;
+            $value = $characteristics[$i];
+            $caption = $captions[$i];
+
+            $sql = "INSERT INTO `products_characteristics` (id_prod, id_charact, value, caption)
+                    VALUES (:id_prod, :id_charact, '$value', '$caption')";
+
+            $result = $this->db->prepare($sql);
+            $parameters = array(':id_prod' => $id_prod, ':id_charact' => $id_charact);
+            $result->execute($parameters);
+        }
+    }
+
+
+    
+
+
+    function getAllProductsAdmin(){
+        $sql = "SELECT pr.id_prod, pr.name, pr.price, pr.name_img, pr.description, cat.name as category, cat.caption as nameDir 
+                FROM `products` `pr` 
+                JOIN `category` `cat` ON pr.id_category = cat.id_category 
+                ORDER BY pr.id_prod DESC";
+
+        $result = $this->db->prepare($sql);
+        $result->execute();
+        return $result->fetchAll();
+    }
+
+    function getCharacterisrics($id_category){
+        $sql = "SELECT charact.name 
+                FROM `list_characteristics` `list` 
+                JOIN `characteristics` `charact` ON list.id_charact = charact.id_charact
+                WHERE list.id_category = :id_category";
+
+        $result = $this->db->prepare($sql);
+        $parameters = array(':id_category' => $id_category);
+        $result->execute($parameters);
+        echo json_encode($result->fetchAll());
+    }
+
+    function getAllProductCharacteristics(){
+        $sql = "SELECT * FROM `products_characteristics` ORDER BY id_all DESC";
+
+        $result = $this->db->prepare($sql);
+        $result->execute();
+        return $result->fetchAll();        
     }
 }

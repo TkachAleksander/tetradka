@@ -474,7 +474,7 @@
           this.options.template.caret +
           '</span>' +
           '</button>' +
-          '<div class="dropdown-menu open">' +
+          '<div class="dropdown-menu open" onclick="getCharacterisrics()">' +
           header +
           searchbox +
           actionsbox +
