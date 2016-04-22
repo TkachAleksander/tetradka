@@ -16,7 +16,8 @@ class Model
 
         $sql = "SELECT pr.id_prod, pr.name, pr.price, pr.name_img, cat.name as category, cat.caption as nameDir 
                 FROM `products` `pr` 
-                JOIN `category` `cat` ON pr.id_category = cat.id_category";
+                JOIN `category` `cat` ON pr.id_category = cat.id_category
+                WHERE pr.show = '1'";
 
         $result = $this->db->prepare($sql);
         $result->execute();
@@ -24,7 +25,7 @@ class Model
     }
 
     function sendOrderInDB($f_name,$l_name,$phone,$cookieBasket){
-        
+
         $siteKey = "6LdaEB4TAAAAAODS86yvVGhD5fDiPxhXjD31qw68";
         $secret = "6LdaEB4TAAAAAMEJWmk4ilYj-uGU5IryThfWfd8W";
         // reCAPTCHA supported 40+ languages listed here: https://developers.google.com/recaptcha/docs/language
@@ -170,7 +171,7 @@ class Model
 
         $sql = "SELECT pr.id_prod, pr.name, pr.price, pr.name_img, cat.name as category, cat.caption as nameDir 
                 FROM `products` `pr` JOIN `category` `cat` ON pr.id_category = cat.id_category 
-                WHERE cat.caption = :param1 ";
+                WHERE cat.caption = :param1 AND pr.show = '1' ";
 
         $result = $this->db->prepare($sql);
         $parameters = array(':param1' => $param1);
@@ -185,7 +186,7 @@ class Model
                 JOIN `category` `cat` ON pr.id_category = cat.id_category 
                 JOIN `products_characteristics` `charact` ON pr.id_prod = charact.id_prod 
                 WHERE cat.caption = :param1 
-                AND charact.caption = :param2";
+                AND charact.caption = :param2 AND pr.show = '1'";
 
         $result = $this->db->prepare($sql);
         $parameters = array(':param1' => $param1, ':param2' => $param2);
@@ -199,7 +200,8 @@ class Model
                 JOIN `category` `cat` ON pr.id_category = cat.id_category 
                 WHERE cat.caption = :param1
                 AND pr.id_prod IN (SELECT id_prod from `products_characteristics` `pc` where `pc`.`caption` = :param2)
-                AND pr.id_prod IN (SELECT id_prod from `products_characteristics` `pc` where `pc`.`caption` = :param3)";
+                AND pr.id_prod IN (SELECT id_prod from `products_characteristics` `pc` where `pc`.`caption` = :param3)
+                AND pr.show = '1'";
 
         $result = $this->db->prepare($sql);
         $parameters = array(':param1' => $param1, ':param2' => $param2,':param3' => $param3);
@@ -214,7 +216,8 @@ class Model
                 WHERE cat.caption = :param1
                 AND pr.id_prod IN (SELECT id_prod from `products_characteristics` `pc` where `pc`.`caption` = :param2)
                 AND pr.id_prod IN (SELECT id_prod from `products_characteristics` `pc` where `pc`.`caption` = :param3)
-                AND pr.id_prod IN (SELECT id_prod from `products_characteristics` `pc` where `pc`.`caption` = :param4)";
+                AND pr.id_prod IN (SELECT id_prod from `products_characteristics` `pc` where `pc`.`caption` = :param4)
+                AND pr.show = '1'";
 
         $result = $this->db->prepare($sql);
         $parameters = array(':param1' => $param1, ':param2' => $param2,':param3' => $param3,':param4' => $param4);
