@@ -24,72 +24,91 @@ class Model
     }
 
     function sendOrderInDB($f_name,$l_name,$phone,$cookieBasket){
-
-        $sql = "INSERT INTO `orders` (f_name, l_name, phone) VALUES (:f_name, :l_name, :phone)";
         
-        $result = $this->db->prepare($sql);
-        $parameters = array(':f_name' => $f_name, 'l_name' => $l_name, ':phone' => $phone );
-        $result->execute($parameters);
-
-        $sql = "SELECT id FROM `orders` ORDER BY id DESC LIMIT 1";
-        $query = $this->db->prepare($sql);
-        $query->execute();
-        $id = $query->fetch();
-        $id = $id->id;
-
-        $sum = 0;
-        $JsonOrders = json_decode($cookieBasket, true);
-        foreach ($JsonOrders as $JsonOrder) 
-        {
-            $name = $JsonOrder['name'];
-            $photo = $JsonOrder['photo'];
-            $code = $JsonOrder['code'];
-            $price = $JsonOrder['price'];
-            $amount = $JsonOrder['amount'];
-            $sum += $price*$amount;
-
-            $sql = "INSERT INTO `orders_info` (id, name, photo, code, price, amount) VALUES ('$id','$name','$photo','$code','$price','$amount')";
-            $query = $this->db->prepare($sql);
-            $query->execute();
+        $siteKey = "6LdaEB4TAAAAAODS86yvVGhD5fDiPxhXjD31qw68";
+        $secret = "6LdaEB4TAAAAAMEJWmk4ilYj-uGU5IryThfWfd8W";
+        // reCAPTCHA supported 40+ languages listed here: https://developers.google.com/recaptcha/docs/language
+        $lang = "ru";
+        // The response from reCAPTCHA
+        $resp = null;
+        // The error code from reCAPTCHA, if any
+        $error = null;
+        $reCaptcha = new ReCaptcha($secret);
+        // Was there a reCAPTCHA response?
+        if ($_POST["g-recaptcha-response"]) {
+            $resp = $reCaptcha->verifyResponse(
+                $_SERVER["REMOTE_ADDR"],
+                $_POST["g-recaptcha-response"]
+            );
         }
 
-        $sql = "UPDATE `orders` SET sum = '$sum' WHERE id = :id";
-        $result = $this->db->prepare($sql);
-        $parameters = array(':id' => $id);
-        $result->execute($parameters);
+        if ($resp != null && $resp->success) {
+            $sql = "INSERT INTO `orders` (f_name, l_name, phone) VALUES (:f_name, :l_name, :phone)";
+            
+            $result = $this->db->prepare($sql);
+            $parameters = array(':f_name' => $f_name, 'l_name' => $l_name, ':phone' => $phone );
+            $result->execute($parameters);
 
-        include '../phpmailer/PHPMailerAutoload.php';
-        // require '/phpmailer/PHPMailerAutoload.php';
+            $sql = "SELECT id FROM `orders` ORDER BY id DESC LIMIT 1";
+            $query = $this->db->prepare($sql);
+            $query->execute();
+            $id = $query->fetch();
+            $id = $id->id;
 
-        $mail = new PHPMailer;
+            $sum = 0;
+            $JsonOrders = json_decode($cookieBasket, true);
+            foreach ($JsonOrders as $JsonOrder) 
+            {
+                $name = $JsonOrder['name'];
+                $photo = $JsonOrder['photo'];
+                $code = $JsonOrder['code'];
+                $price = $JsonOrder['price'];
+                $amount = $JsonOrder['amount'];
+                $sum += $price*$amount;
 
-        $mail->isSMTP(); // указываем что письмо шлем через smtp
+                $sql = "INSERT INTO `orders_info` (id, name, photo, code, price, amount) VALUES ('$id','$name','$photo','$code','$price','$amount')";
+                $query = $this->db->prepare($sql);
+                $query->execute();
+            }
 
-        $mail->Host = 'smtp.mail.ru';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'tetradka_sumy';  // логин почты
-        $mail->Password = '242366242366Aa';
-        $mail->SMTPSecure = 'ssl';  // протокол шифрование или tls - смотрим в дукументации к smtp ну и там же его порт
-        $mail->Port = '465';
+            $sql = "UPDATE `orders` SET sum = '$sum' WHERE id = :id";
+            $result = $this->db->prepare($sql);
+            $parameters = array(':id' => $id);
+            $result->execute($parameters);
 
-        $mail->CharSet = 'UTF-8';
-        $mail->From = 'tetradka_sumy@mail.ru'; // от кого письмо 
-        $mail->FromName = 'Tetradka';
-        $mail->addAddress('tetradka_sumy@mail.ua');  // есть 2 параметра $address - адрес получателя   $name = "" - его имя(необязательный)
-        $mail->addBCC('ssori3838@ukr.net', 'Александр');
+            include '../phpmailer/PHPMailerAutoload.php';
+            // require '/phpmailer/PHPMailerAutoload.php';
 
-        $mail->isHTML(true); //  формат в каком будет отправлятся письмо text или html
+            $mail = new PHPMailer;
 
-        $mail->Subject = 'Новый заказ'; // Тема письма
-        $srt = 'dfgd ';
+            $mail->isSMTP(); // указываем что письмо шлем через smtp
 
-        $mail->Body = 'Содержимое письма ';  // Содержимое письма 
-        
-        $mail->AltBody = 'Альтернативное письмо';  // если у клиента гомно ящик не потдержующий теги
-        //$mail->AddAttachment('phpmailer/tetradka_sneg.png'); // путь к картинке, имя с каким прийдет к адрессату
-        //$mail->SMTPDebug = 1; // Расширенный перечень ошибок: 0 - как и в ErrorInfo;    1 - еще больше     2 - там вобще "Война и Мир"
+            $mail->Host = 'smtp.mail.ru';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'tetradka_sumy';  // логин почты
+            $mail->Password = '242366242366Aa';
+            $mail->SMTPSecure = 'ssl';  // протокол шифрование или tls - смотрим в дукументации к smtp ну и там же его порт
+            $mail->Port = '465';
 
-        $mail->send();
+            $mail->CharSet = 'UTF-8';
+            $mail->From = 'tetradka_sumy@mail.ru'; // от кого письмо 
+            $mail->FromName = 'Tetradka';
+            $mail->addAddress('tetradka_sumy@mail.ua');  // есть 2 параметра $address - адрес получателя   $name = "" - его имя(необязательный)
+            $mail->addBCC('ssori3838@ukr.net', 'Александр');
+
+            $mail->isHTML(true); //  формат в каком будет отправлятся письмо text или html
+
+            $mail->Subject = 'Новый заказ'; // Тема письма
+            $srt = 'dfgd ';
+
+            $mail->Body = 'Содержимое письма ';  // Содержимое письма 
+            
+            $mail->AltBody = 'Альтернативное письмо';  // если у клиента гомно ящик не потдержующий теги
+            //$mail->AddAttachment('phpmailer/tetradka_sneg.png'); // путь к картинке, имя с каким прийдет к адрессату
+            //$mail->SMTPDebug = 1; // Расширенный перечень ошибок: 0 - как и в ErrorInfo;    1 - еще больше     2 - там вобще "Война и Мир"
+
+            $mail->send();
+        }
     }
 
     function getMoreProduct($id_prod){
@@ -460,27 +479,21 @@ class Model
         $id_prod = $result->fetch();
         $id_prod = $id_prod->id_prod;
 
-        $sql = "SELECT id_charact 
-                FROM `list_characteristics` 
-                WHERE id_category = :category";
+        foreach ($characteristics as $key => $value) {
 
-        $result = $this->db->prepare($sql);
-        $parameters = array(':category' => $category[0]);
-        $result->execute($parameters);
-
-        $id_characteristics = $result->fetchAll();
-
-        for ( $i=0; $i < count($id_characteristics); $i++) {
-
-            $id_charact = $id_characteristics[$i]->id_charact;
-            $value = $characteristics[$i];
-            $caption = $captions[$i];
-
+            $caption = $captions[$key];
             $sql = "INSERT INTO `products_characteristics` (id_prod, id_charact, value, caption)
-                    VALUES (:id_prod, :id_charact, '$value', '$caption')";
+                    VALUES (:id_prod, :id_charact, :value, :caption)";
 
             $result = $this->db->prepare($sql);
-            $parameters = array(':id_prod' => $id_prod, ':id_charact' => $id_charact);
+            
+            $parameters = array(
+                ':id_prod' => $id_prod, 
+                ':id_charact' => $key,
+                ':value' => $value,
+                ':caption' => $caption
+            );
+
             $result->execute($parameters);
         }
     }
@@ -501,7 +514,7 @@ class Model
     }
 
     function getCharacterisrics($id_category){
-        $sql = "SELECT charact.name 
+        $sql = "SELECT charact.name, charact.id_charact
                 FROM `list_characteristics` `list` 
                 JOIN `characteristics` `charact` ON list.id_charact = charact.id_charact
                 WHERE list.id_category = :id_category";

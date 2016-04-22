@@ -29,7 +29,10 @@
     <link href='https://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'> <!-- Лого -->
     <link href='https://fonts.googleapis.com/css?family=Kelly+Slab&subset=latin,cyrillic' rel='stylesheet' type='text/css'> <!-- Цена -->
     <link href='https://fonts.googleapis.com/css?family=Philosopher:400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'> <!-- Кнопки tile -->
-
+    
+    <!-- RECAPTCHA -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
 <body>
 
     <nav class="navbar navbar-inverse navbar-static-top navbar-fixed-top" role="navigation">

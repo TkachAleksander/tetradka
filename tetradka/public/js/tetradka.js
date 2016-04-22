@@ -280,18 +280,18 @@ function getCharacterisrics(){
 			success: function(data){
 
 				$('.addCharact').empty();
-				$('.addCaption').empty();
+				$('.addCaption').empty(); 
 
 				for(var i = 0; i < data.length; i++){
 					$('.addCharact').append(
 						'<p><div class="input-group">'+
 							'<span class="input-group-addon"><b>></b> '+data[i].name+':</span>'+
-							'<input type="text" class="form-control" name="characteristics['+i+']" required>'+
+							'<input type="text" class="form-control" name="characteristics['+data[i].id_charact+']" required>'+
 						'</div></p>');
 					$('.addCaption').append(
 						'<p><div class="input-group">'+
 							'<span class="input-group-addon">caption:</span>'+
-							'<input type="text" class="form-control" name="captions['+i+']" required>'+
+							'<input type="text" class="form-control" name="captions['+data[i].id_charact+']" required>'+
 					'	</div></p>');
 					}
 			}	

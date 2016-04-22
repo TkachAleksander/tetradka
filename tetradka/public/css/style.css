@@ -385,6 +385,9 @@ a:hover{text-decoration: none;}
 .checkoutNameError, .checkoutLNameError{
 	color: #B85C5C;
 }
+.btn-submit{
+	margin-top: 15px;
+}
 
 /***********
    FOOTER

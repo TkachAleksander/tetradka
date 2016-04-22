@@ -14,7 +14,7 @@
                                 <i>
                                     <table class="table table-more">
                                         <tbody>
-                                        <pre> <?php print_r($values_charact); ?> </pre> 
+
                                         <?php for( $i=0; $i<count($names_charact); $i++) : ?>
                                             <tr>
                                                 <td class="active"> <?php echo $names_charact[$i]->name; ?> </td>
@@ -48,6 +48,7 @@
                                      } ?>
                                                 
                             </div>
+                            
                         </div>
                     </div>
                 </div>

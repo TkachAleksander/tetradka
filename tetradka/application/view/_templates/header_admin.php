@@ -29,9 +29,6 @@
     <link href='https://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'> <!-- Лого -->
     <link href='https://fonts.googleapis.com/css?family=Kelly+Slab&subset=latin,cyrillic' rel='stylesheet' type='text/css'> <!-- Цена -->
     <link href='https://fonts.googleapis.com/css?family=Philosopher:400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'> <!-- Кнопки tile -->
-    <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>fonts/glyphicons-halflings-regular.wof">
-    <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>fonts/glyphicons-halflings-regular.wof2">
-    <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>fonts/glyphicons-halflings-regular.ttf">
 
 <body>
 

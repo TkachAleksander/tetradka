@@ -3,11 +3,11 @@
    		<div class="row">
 			
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 floor-admin">
-
+				<form action="<?php echo URL;?>adminMenu/addProduct" method="POST">
 				<div class="row">
 					<div class="col-lg-12">
 						
-					<form action="<?php echo URL;?>adminMenu/addProduct" method="POST">
+					
 						<p >
 						<select class="selectpicker" id="getCategory" title="Категория" name="category[]">
 							<?php foreach ($categories as $category) { ?>
@@ -41,8 +41,6 @@
 						<span class="input-group-addon">Описание:</span>
 						<input type="text" class="form-control" name="description" required>
 					</div>
-					</p><p>
-						<input type="submit" class="btn btn-sm btn-primary" type="text" name="btn-add-products" value="Добавить">
 					</p>
 				</div>
 
@@ -55,6 +53,10 @@
 				</div>
 
 				</div>
+				<p>
+					<input type="submit" class="btn btn-sm btn-primary" type="text" name="btn-add-products" value="Добавить">
+				</p>
+				
 				</form>
 			</div>
 		</div>
