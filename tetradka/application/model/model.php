@@ -226,6 +226,15 @@ class Model
     }
 
 
+    function checkCookieBasket(){
+        $cookie = $_COOKIE['basket'];
+        if($cookie == null || $cookie == '%5B%5D'){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 /**********
    ADMIN
 **********/

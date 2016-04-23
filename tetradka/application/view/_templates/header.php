@@ -158,11 +158,11 @@
     </nav>
 
   <!-- BASKET -->
-  <div class="modal fade" id="basket" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" onclick="fillCheckout()" id="basket" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="fillCheckout()">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Корзина</h4>
       </div>
       <div class="modal-body">
@@ -182,8 +182,8 @@
         </table>
       </div> 
       <div class="modal-footer">
-        <button type="button" class="btn btn-default btn-sm" onclick="deleteCookie()"><b>Очистить корзину</b></button>
-        <a href="<?php echo URL; ?>checkout "><button type="button" class="btn btn-success btn-sm" onclick="fillCheckout()" ><b>Оформить заказ</b></button></a>
+        <button type="button" class="btn btn-default btn-sm" onclick="deleteCookie()"><b> Очистить корзину </b></button>
+        <a href="<?php echo URL; ?>checkout "><button type="button" class="btn btn-success btn-sm"><b> Оформить заказ </b></button></a>
       </div>
     </div>
   </div> 

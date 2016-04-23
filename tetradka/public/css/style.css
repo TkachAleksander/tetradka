@@ -28,6 +28,11 @@ a:hover{text-decoration: none;}
 	color: #075f8d;
 }
 
+.text-size-20 {font-size: 20px;}
+
+
+.text-size-18 {font-size: 18px;}
+
 
 /***********
    HEADER
@@ -269,6 +274,20 @@ a:hover{text-decoration: none;}
 }
 
 
+/***********
+   ALERT
+***********/
+
+
+.alert-new-order{
+    position: fixed;
+    top: 3px;
+    left: 35px;
+    z-index: 10000;
+    width: 95%;
+    font-size: 15px;
+}
+
 
 /***********
  BREADCRUMB
@@ -373,6 +392,9 @@ a:hover{text-decoration: none;}
 	width: 70px;
 	display: inline;
 }
+.margin{
+	margin-top: 40px;
+}
 
 
 /***********
@@ -385,7 +407,7 @@ a:hover{text-decoration: none;}
 .checkoutNameError, .checkoutLNameError{
 	color: #B85C5C;
 }
-.btn-submit{
+.btn-checkout{
 	margin-top: 15px;
 }
 
@@ -465,7 +487,7 @@ a:hover{text-decoration: none;}
 	text-shadow: 2px 2px 2px #9d9d9d;
 	font-size: 4em;
 }
-.text-index {font-size: 20px;}
+
 @media screen and (max-width: 1200px){
 /*	.logo-text-index, .text-index{
 		text-align: center;

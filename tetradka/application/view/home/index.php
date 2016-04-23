@@ -1,3 +1,16 @@
+<?php  if ( isset($_COOKIE['newOrder']) ) { ?>
+
+	<div class="row">
+		<div class="alert alert-success alert-dismissible fade in alert-new-order text-center" role="alert" >
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="deleteNewOrder()">
+		    <span aria-hidden="true">&times;</span>
+		  </button>
+		  <strong>Ваш заказ принят!</strong> В ближайшее время мы свяжемся с вами для подтверждения заказа.
+		</div>
+	</div>
+
+<?php } ?>
+
 <div class="container floor-container">
 	<div class="col-md-12 ">
    		<div class="row">
@@ -7,7 +20,7 @@
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 pull-right">
 	
 						<p class="logo-text-index PatuaOne">Tetradka</p>
-						<p class="text-index MarckScript ">Интернет-магазин канцтоваров ориентированный на мелкий опт.</p>
+						<p class="text-size-20 MarckScript ">Интернет-магазин канцтоваров ориентированный на мелкий опт.</p>
 	
 					</div>
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">

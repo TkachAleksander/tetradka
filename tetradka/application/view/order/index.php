@@ -16,6 +16,12 @@
 				 		<p class="MarckScript text-index">В ближайшее время мы свяжемся с вами для подтверждения заказа.</p>
 						<a href="<?php echo URL; ?>" class="btn btn-success btn-sm"><b>Продолжить покупки</b></a>
 					</div>
+<div class="alert alert-success alert-dismissible fade in" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+</div>
 
             </div>
         </div>

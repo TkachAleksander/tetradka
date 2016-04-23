@@ -127,9 +127,13 @@ function basketDelete(code){
 /**
 *	Checkout----------------------------------------------------------------------------------------
 **/
-$(document).ready(
+// $(document).ready(
 
 	function fillCheckout(){
+
+		$('.td-checkout').remove();
+		$('#summa-checkout').html(0);
+
 		var cookies = $.cookie('basket');
 		if (cookies != 0){
 
@@ -137,7 +141,7 @@ $(document).ready(
 			for (var i=0; i<Object.keys(tovar).length; i++){
 
 				$('#th-checkout').after(
-								'<tr class="active td-basket">'+
+								'<tr class="active td-checkout">'+
 									'<td>'+tovar[i].category+' '+tovar[i].name+
 									'<td class="text-center">'+'<img class="img-responsive img-checkout" src="/img/products/'+tovar[i].dir+'/'+tovar[i].photo +'">'+
 									'<td class="text-center">'+tovar[i].code+
@@ -148,8 +152,9 @@ $(document).ready(
 				sum = $('#summa-checkout').text(parseFloat(sum).toFixed(2));
 			}
 		}
+
 	}
-);
+// );
 
 function inputCheckoutName(){
 	var pattern = /[а-яА-яё-]{2,}/g;
@@ -207,6 +212,7 @@ function offAnimation(){
 /*
 ** Orders --------------------------------------------------------------------------------------------
 */
+
 function moreAboutOrder(id)
 {
 	$.ajax({
@@ -263,6 +269,8 @@ function sendInOrderTable(id,iz,v){
 		location.reload();	
 }
 
+function newOrder(){ $.cookie('newOrder', new Array(), { expires: 1, path:'/'}); }
+function deleteNewOrder(){ $.cookie('newOrder', new Array(), { expires: -1, path:'/'}); }
 /*
 ** addProducts --------------------------------------------------------------------------------------------
 */
