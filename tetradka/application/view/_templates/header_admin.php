@@ -53,10 +53,11 @@
                 <ul class="nav navbar-nav firstMenu style-menu">
                     <li class="dropdown">
                         <a href="#"> Управление товарами </a>
-                        <ul class="dropdown-menu style-menu nextLevel">                            
+                        <ul class="dropdown-menu style-menu nextLevel">     
+                            <li><a href="<?php echo URL; ?>adminMenu/showAllProducts"> Просмотр </a></li>                       
                             <li><a href="<?php echo URL; ?>adminMenu/addProducts"> Добавить </a></li>
-                            <li><a href="<?php echo URL; ?>adminMenu/deleteProducts"> Удалить </a></li>
-                            <li class="cross-over"><a href="<?php echo URL; ?>adminMenu/databaseControl"> Управление БД  </a></li>
+                            <li><a href="<?php echo URL; ?>adminMenu/deleteProducts"> Найти / Удалить </a></li>
+                            <li><a href="<?php echo URL; ?>adminMenu/databaseControl"> Управление БД </a></li>
                         </ul>                    
                     </li>
                     <li class="dropdown">

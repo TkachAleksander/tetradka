@@ -127,7 +127,6 @@ function basketDelete(code){
 /**
 *	Checkout----------------------------------------------------------------------------------------
 **/
-// $(document).ready(
 
 	function fillCheckout(){
 
@@ -154,7 +153,6 @@ function basketDelete(code){
 		}
 
 	}
-// );
 
 function inputCheckoutName(){
 	var pattern = /[а-яА-яё-]{2,}/g;
@@ -305,4 +303,21 @@ function getCharacterisrics(){
 			}	
 		});
 	}
+}
+
+/*
+** deleteProducts --------------------------------------------------------------------------------------------
+*/
+
+function showProduct(id_prod, bool){ 
+	$.ajax({
+		type: "POST",
+		url: "/adminMenu/showProduct",
+		data: { id_prod: id_prod, bool: bool },
+		dataType: "json",
+		success: function(data){
+
+		}
+	});
+		location.reload();	
 }

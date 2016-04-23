@@ -5,23 +5,21 @@
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 floor-admin">
 				<div class="col-lg-offset-1 col-lg-10 ">
 	
-					<p class="text-center topic-admin-panel"><b>Удалить товар по коду</b></p>
+					<p class="text-center topic-admin-panel"><b>Вывод товаров по категориям</b></p>
 					
-					<form action="<?php echo URL;?>adminMenu/deleteProducts" method="POST">
+					<form action="<?php echo URL;?>adminMenu/showAllProducts" method="POST">
 						<p>
-						<div class="row">
-						    <div class="input-group">
-						    	<span class="input-group-addon">Код товара:</span>
-						    	<input type="text" class="form-control" placeholder="141516" name="code" required>
-						    </div>
-						</div>
+							<select class="selectpicker" id="getCategory"  name="category[]">
+								<option value="0"> Все товары </option>
+								<?php foreach ($categories as $category) { ?>
+									<option value="<?php echo $category->id_category;?>"> <?php echo $category->name; ?> </option>
+								<?php } ?>
+							</select>
+							<input type="submit" class="btn btn-sm btn-primary" name="btn-show-all-products" value=">">
 						</p>
-							
-						<a href="<?php echo URL;?>eng" class="btn btn-primary pull-right"> Назад </a>
-						
-						<input type="submit" class="btn btn-success pull-right btn_add_notebook" name="btn_search" value="Поиск">
-						<input type="submit" class="btn btn-danger" name="btn_delete" value="Удалить">
-
+						<ul>
+							<?php foreach ($categories as $category) { ?> <li><?php echo $category->name; ?></li> <?php } ?> 
+						</ul>
 					</form>
 						
 				</div>
@@ -32,7 +30,7 @@
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 floor-admin">
 				<div class="col-lg-12">	
 
-					<p class="text-center topic-admin-panel"><b>Найденые товары по коду</b></p>
+					<p class="text-center topic-admin-panel"><b> Найденые товары </b></p>
 
 					<table class="table table-bordered table-notebooks">
          				<tr id="th-basket" class="active">
@@ -44,6 +42,7 @@
        					    <th class="text-center"> Категория </th>
        					    <th class="text-center"> Show </th>
        					</tr>
+
        				<?php foreach ($products as $product) { ?>
     					<tr>
     						<td class="text-center"> <?php echo $product->id_prod; ?></td>
@@ -51,7 +50,7 @@
     						<td class="text-center"> <?php echo $product->price; ?></td>
     						<td class="text-center"> <img class="img-product-in-admin img-resposive" src="<?php echo URL; ?>img/products/<?php echo $product->caption; ?>/<?php echo $product->name_img;?>"></td>
     						<td class="text-center"> <?php echo $product->description; ?></td>
-    						<td class="text-center"> <?php echo $product->category; ?></td>
+    						<td class="text-center"> <?php echo $product->name; ?></td>
     						<td class="text-center">
     							<?php if($product->show){ ?>
     								<input type="submit" class="btn btn-sm btn-primary" name="btn_show" value="1" onclick="showProduct(<?php echo $product->id_prod;?>,'0')">

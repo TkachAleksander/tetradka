@@ -182,9 +182,9 @@ class AdminMenu extends Controller
         $is_admin = $this->model->is_admin();
 
         if($is_admin){ 
-           $categories = $this->model->getAllCategories();
-           $products = $this->model->getAllProductsAdmin();
-           $products_characteristics = $this->model->getAllProductCharacteristics();
+            $categories = $this->model->getAllCategories();
+            $products = $this->model->getAllProductsAdmin();
+            $products_characteristics = $this->model->getAllProductCharacteristics();
     
             require APP . 'view/_templates/header_admin.php';
             require APP . 'view/adminMenu/addProducts.php';
@@ -206,9 +206,44 @@ class AdminMenu extends Controller
         header("Location: " . URL . "adminMenu/addProducts");            
     }
 
+    public function deleteProducts(){
+        $is_admin = $this->model->is_admin();
+
+        if($is_admin){ 
+            $products = $this->model->searchProducts($_POST['code']);
+            if (isset($_POST['btn_delete'])){
+                $this->model->deleteProducts($_POST['code']);
+            }
+
+            require APP . 'view/_templates/header_admin.php';
+            require APP . 'view/adminMenu/deleteProducts.php';
+            require APP . 'view/_templates/footer.php';
+        } else { 
+            header("Location: " . URL);
+        }         
+    }
 
     public function getCharacterisrics(){
         $this->model->getCharacterisrics($_POST['id']);
+    }
+
+    public function showProduct(){
+            $this->model->showProduct($_POST['id_prod'],$_POST['bool']);
+    }
+
+    public function showAllProducts(){
+        $is_admin = $this->model->is_admin();
+
+        if($is_admin){ 
+            $categories = $this->model->getAllCategories();
+            $products = $this->model->getProductsFromCategory($_POST['category']);
+
+            require APP . 'view/_templates/header_admin.php';
+            require APP . 'view/adminMenu/showAllProducts.php';
+            require APP . 'view/_templates/footer.php';
+        } else { 
+            header("Location: " . URL);
+        }                 
     }
 
 }

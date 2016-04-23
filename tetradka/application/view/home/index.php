@@ -1,18 +1,18 @@
 <?php  if ( isset($_COOKIE['newOrder']) ) { ?>
 
-	<div class="row">
-		<div class="alert alert-success alert-dismissible fade in alert-new-order text-center" role="alert" >
-		  <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="deleteNewOrder()">
-		    <span aria-hidden="true">&times;</span>
-		  </button>
-		  <strong>Ваш заказ принят!</strong> В ближайшее время мы свяжемся с вами для подтверждения заказа.
-		</div>
-	</div>
+  <div class="align_center_to_left">
+    <div class="alert alert-success alert-dismissible fade in align_center_to_right text-center" role="alert" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="deleteNewOrder()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong> Ваш заказ принят! </strong> В ближайшее время мы свяжемся с вами для подтверждения заказа.
+    </div>
+  </div>
 
 <?php } ?>
 
 <div class="container floor-container">
-	<div class="col-md-12 ">
+	<div class="col-md-12">
    		<div class="row">
 
       		<div class="col-lg-offset-1 col-lg-10 floor-about hidden-xs">

@@ -6,7 +6,7 @@
             <div class="products col-lg-offset-1 col-lg-10 floor-content">
 
                 <div class="row row-checkout">
-                    <div class="col-lg-7"> 
+                    <div class="col-lg-7 col-md-7 "> 
                         <table class="table table-bordered table-checkout">
                             <tr id="th-checkout" class="active">
                                 <th class="text-center">Имя товара</th>
@@ -23,7 +23,7 @@
                         </table>
                     </div>
         
-                    <div class="col-lg-offset-1 col-lg-4">
+                    <div class="col-lg-offset-1 col-md-offset-1  col-lg-4 col-md-4 ">
                         <form role="form" method="POST" action="<?php echo URL; ?>checkout/sendOrder">
                             <div class="form-group">
                                 <label> Как к Вам обращаться ? </label>
@@ -81,7 +81,7 @@
                     </div>
 
                     <div class=" col-lg-5 text-center">
-                        <p class="margin">
+                        <p class="margin-40">
                             <!-- <span class="text-size-20 MarckScript "> Корзина пуста </span> -->
                             <a href="<?php echo URL; ?>">
                                 <button class="btn btn-success"><b> Но это никогда не поздно исправить :) </b></button>

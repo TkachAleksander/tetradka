@@ -544,4 +544,52 @@ class Model
         $result->execute();
         return $result->fetchAll();        
     }
+
+
+
+/******************
+  DELETE PRODUCTS
+*******************/
+
+
+    function searchProducts($code){
+        $sql = "SELECT cat.caption, cat.name as category, pr.id_prod, pr.name, pr.price, pr.name_img, pr.description, pr.show 
+                FROM `products` `pr`   
+                JOIN `category` `cat` ON pr.id_category = cat.id_category
+                WHERE pr.id_prod = :code";
+
+        $result = $this->db->prepare($sql);
+        $parameters = array(':code' => $code);
+        $result->execute($parameters);
+        return $result->fetchAll();        
+    }
+    function deleteProducts($code){
+        $sql = "DELETE FROM `products` WHERE id_prod = :code";
+
+        $result = $this->db->prepare($sql);
+        $parameters = array(':code' => $code);
+        $result->execute($parameters);
+    }
+
+    function showProduct($id_prod, $bool){
+        $sql = "UPDATE `products`  SET `show` = :bool WHERE id_prod = :id_prod";
+
+        $result = $this->db->prepare($sql);
+        $parameters = array(':bool' => $bool, ':id_prod' => $id_prod);
+        $result->execute($parameters);
+
+        echo json_encode();    
+    }
+
+    function getProductsFromCategory($id_category){
+        $sql = "SELECT * FROM `products` `pr`JOIN `category` `cat` ON cat.id_category = pr.id_category";
+        if ($id_category != 0){
+            $sql = $sql . " WHERE cat.id_category = :id_category";
+        }
+                
+        $result = $this->db->prepare($sql);
+        $parameters = array(':id_category' => $id_category[0]);
+        $result->execute($parameters);
+        return $result->fetchAll();
+    }
 }
