@@ -195,7 +195,7 @@ class AdminMenu extends Controller
     }
     public function addProduct(){
         if (isset($_POST['btn-add-products'])){
-            $this->model->addProduct($_POST['category'],$_POST['product_name'],$_POST['price'],$_POST['name_img'],$_POST['description'],$_POST['characteristics'],$_POST['captions']);
+            $this->model->addProduct($_POST['checkbox_photo'],$_POST['amount'],$_POST['category'],$_POST['product_name'],$_POST['price'],$_POST['name_img'],$_POST['description'],$_POST['characteristics'],$_POST['captions']);
         } 
         header("Location: " . URL . "adminMenu/addProducts");        
     }
@@ -220,7 +220,7 @@ class AdminMenu extends Controller
             require APP . 'view/_templates/footer.php';
         } else { 
             header("Location: " . URL);
-        }         
+        }       
     }
 
     public function getCharacterisrics(){

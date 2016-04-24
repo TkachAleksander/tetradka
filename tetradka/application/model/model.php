@@ -476,12 +476,14 @@ class Model
 *******************/
 
     
-    function addProduct($category, $product_name, $price, $name_img, $description, $characteristics, $captions){
+    function addProduct($checkbox_photo, $amount, $category, $product_name, $price, $name_img, $description, $characteristics, $captions){
+        $name_face_img = $name_img."1.jpg";
+
         $sql = "INSERT INTO `products` (name, price, name_img, description, id_category) 
-                VALUES ( :product_name, :price, :name_img, :description, :category)";
+                VALUES ( :product_name, :price, :name_face_img, :description, :category)";
 
         $result = $this->db->prepare($sql);
-        $parameters = array(':product_name' => $product_name, ':price' => $price, ':name_img' => $name_img, ':description' => $description, ':category' => $category[0]);
+        $parameters = array(':product_name' => $product_name, ':price' => $price, ':name_face_img' => $name_img, ':description' => $description, ':category' => $category[0]);
         $result->execute($parameters);
 
         $sql = "SELECT id_prod FROM `products` ORDER BY id_prod DESC LIMIT 1";
@@ -508,6 +510,21 @@ class Model
 
             $result->execute($parameters);
         }
+        if (isset($_POST['checkbox_photo']) && $_POST['checkbox_photo'] == 'yes'){
+            for($i=1; $i<=$amount; $i++){
+                $img = $name_img.$i.'.jpg';
+
+                $sql = "INSERT INTO `more_photo` (id_prod, name)
+                        VALUES (:id_prod, :img)";
+
+                $result = $this->db->prepare($sql);
+                $parameters = array(':id_prod' => $id_prod, ':img' => $img);
+                $result->execute($parameters);
+                $img = '';
+            }
+        }
+
+
     }
 
 

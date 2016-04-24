@@ -436,6 +436,7 @@ a:hover{text-decoration: none;}
 	margin-top: 15px;
 }
 
+
 /***********
    FOOTER
 ***********/
@@ -500,6 +501,22 @@ a:hover{text-decoration: none;}
 }
 .btn-admin-add-anythin{
 	margin-bottom: 50px;
+}
+.mas-photo[type="file"]{
+	display: none;
+
+}
+.label-mas-photo{
+	overflow: hidden;
+	display: block;
+	height: 30px;
+	width: 70px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+}
+.label-mas-photo > img {
+	display: block;
+	height: inherit;
 }
 
 

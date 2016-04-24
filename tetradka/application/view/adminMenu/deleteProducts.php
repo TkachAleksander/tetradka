@@ -12,7 +12,7 @@
 						<div class="row">
 						    <div class="input-group">
 						    	<span class="input-group-addon">Код товара:</span>
-						    	<input type="text" class="form-control" placeholder="141516" name="code" required>
+						    	<input type="text" class="form-control" placeholder="141414" name="code" required>
 						    </div>
 						</div>
 						</p>

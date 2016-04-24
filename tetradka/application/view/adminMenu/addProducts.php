@@ -7,7 +7,6 @@
 				<div class="row">
 					<div class="col-lg-12">
 						
-					
 						<p >
 						<select class="selectpicker" id="getCategory" title="Категория" name="category[]">
 							<?php foreach ($categories as $category) { ?>
@@ -20,7 +19,7 @@
 				</div>
 
 				<div class="row">
-				<div class="  col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 					<p>
 					<div class="input-group">
 						<span class="input-group-addon">Имя товара:</span>
@@ -39,15 +38,21 @@
 					</p><p>
 					<div class="input-group">
 						<span class="input-group-addon">Описание:</span>
-						<input type="text" class="form-control" name="description" required>
+						<input type="text" class="form-control" name="description">
 					</div>
 					</p>
+					<input type="checkbox" name="checkbox_photo" value="yes" checked> фото в подробнее
+					<input class="count-product text-center" name="amount"> шт.
+<!-- 					<label class="label-mas-photo">
+      					<img class="img-responsiv" src="<?php echo URL;?>img/mas-photo.png">
+      					<input type="file" name="filename" class="mas-photo" accept="image/*" multiple>
+      				</label>
+      				<input type="submit" value="Загрузить"> -->
 				</div>
 
 				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">	
 					<p class="addCharact"></p>
 				</div>
-
 				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 					<p class="addCaption"></p>
 				</div>
@@ -56,8 +61,15 @@
 				<p>
 					<input type="submit" class="btn btn-sm btn-primary" type="text" name="btn-add-products" value="Добавить">
 				</p>
-				
+
 				</form>
+<!--       			<form action="upload.php" method="post" >
+      				<label class="label-mas-photo">
+      					<img class="img-responsiv" src="<?php echo URL;?>img/mas-photo.png">
+      					<input type="file" name="filename" class="mas-photo" accept="image/*" multiple>
+      				</label>
+      				<input type="submit" value="Загрузить">
+      			</form> -->
 			</div>
 		</div>
 
