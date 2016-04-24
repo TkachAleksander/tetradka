@@ -28,7 +28,15 @@
                                 <p><?php echo $product->description; ?></p>
                                 <div class="block-btn">
                                     <span class="price-more">Цена: <b><?php echo $product->price; ?></b> </span>
-                                    <a href="< ?php echo URL; ?>" class="btn btn-primary btn-more-add-cart" role="button">В корзину</a>
+                                    <a class='btn btn-primary btn-addInBasket' role='button'
+                                        data-name='<?php echo $product->name; ?>' 
+                                        data-code='<?php echo $product->id_prod; ?>' 
+                                        data-price='<?php echo $product->price; ?>' 
+                                        data-photo='<?php echo $product->name_img; ?>'
+                                        data-category='<?php echo $product->category; ?>'
+                                        data-dir='<?php echo $product->nameDir; ?>'>
+                                        В корзину
+                                    </a>
                                 </div>
                             </div> 
         

@@ -252,6 +252,7 @@ a:hover{text-decoration: none;}
 }
 .big-img-margin{
 	margin-bottom: 30px;
+	max-height: 270px;
 }
 .text-more{
 	font-size: 30px;
