@@ -6,11 +6,11 @@
             	<div class="row">
             	    <div class="col-lg-offset-1 col-lg-10 floor-content">
             			<div class="row" >
-            
+
                             <!-- TEXT -->
                             <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 pull-right ">
                             
-                                <p class="text-more MarckScript blue-color text-center"><?php echo $product->category; ?> <?php echo $product->name; ?></p>                   
+                                <h1 class="text-more MarckScript blue-color text-center"><?php echo $product->category; ?> <?php echo $product->name; ?></h1>                   
                                 <i>
                                     <table class="table table-more">
                                         <tbody>

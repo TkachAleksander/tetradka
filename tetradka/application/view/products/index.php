@@ -3,9 +3,15 @@
         <div class="row">
 
             <div class="col-lg-offset-1 col-lg-10 floor-about">
+
+<!--             <ol class="breadcrumb">
+                <li><a href="<?php echo URL;?>">Главная</a></li>
+                <li><?php echo $breadcrumb;?></li>
+
+            </ol> -->
                 <div class="row " id="content-tiles">
 
-<!-- <pre> <?php print_r($products)?> </pre> -->
+<!-- <pre> <?php print_r($breadcrumb)?> </pre> -->
 
                 <?php foreach ($products as $product) : ?> 
                     

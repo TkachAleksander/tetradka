@@ -11,5 +11,10 @@
   ga('send', 'pageview');
 
 </script>
+<!--script type="text/javascript">
+  $tetradka = "Tetradka | ";
+  $h1 = $('h1').html();
+  document.title = $tetradka + $h1;
+</script-->
 </body>
 </html>

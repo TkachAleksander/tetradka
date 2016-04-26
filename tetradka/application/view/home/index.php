@@ -20,8 +20,8 @@
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 pull-right">
 	
 						<p class="logo-text-index PatuaOne">Tetradka</p>
-						<p class="text-size-20 MarckScript ">Интернет-магазин канцтоваров ориентированный на мелкий опт.</p>
-	
+						<h1 class="text-size-20 MarckScript part">Интернет-магазин канцтоваров ориентированный на мелкий опт.</h1>
+
 					</div>
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 						<img class="img-responsive img-about" src="<?php echo URL; ?>/img/about/stock.jpg">

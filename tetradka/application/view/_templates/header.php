@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title><?php echo "Tetradka"; ?></title>
+
+    <title><?php echo $title; ?></title>
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>css/bootstrap.css">
@@ -32,6 +35,8 @@
     
     <!-- RECAPTCHA -->
     <script src='https://www.google.com/recaptcha/api.js'></script>
+
+
     
 </head>
 <body>
@@ -109,43 +114,57 @@
                           </li>
                         </ul>
                     </li>
-<!--                     <li class="dropdown">
-                      <a href="#">Для рисования<b class="caret"></b></a>
+                    <li class="dropdown">
+                      <a href="#"> Для рисования <b class="caret"></b></a>
                       <ul class="dropdown-menu style-menu nextLevel">
+                        <li><a href="<?php echo URL .'products/l1/'. htmlspch('pens'); ?>"> Ручки </a></li>
                         <li class="cross-over"><a href="#">Альбомы</a>
                           <ul class="dropdown-menu style-menu nextLevel">
-                            <li><a href="#">12 листов</a></li>
-                            <li><a href="#">24 листов</a></li>
-                            <li><a href="#">30 листов</a></li>
-                            <li><a href="#">40 листов</a></li>
+                            <li><a href="#"> 12 листов </a></li>
+                            <li><a href="#"> 24 листов </a></li>
+                            <li><a href="#"> 30 листов </a></li>
+                            <li><a href="#"> 40 листов </a></li>
                           </ul>
                         </li>
-                        <li><a href="#">Краски</a></li>
-                        <li><a href="#">Кисточки</a></li>
-                        <li><a href="#">Непроливайки</a></li>
-                        <li class="cross-over"><a href="#">Цветные карандаши</a>
+                        <li><a href="#"> Краски </a></li>
+                        <li><a href="#"> Кисточки </a></li>
+                        <li><a href="#"> Непроливайки </a></li>
+                        <li class="cross-over"><a href="#"> Цветные карандаши </a>
                           <ul class="dropdown-menu style-menu nextLevel">
-                            <li><a href="#">6 цветов</a></li>
-                            <li><a href="#">12 цветов</a></li>
-                            <li><a href="#">24 цвета</a></li>
-                            <li><a href="#">36 цветов</a></li>
+                            <li><a href="#"> 6 цветов </a></li>
+                            <li><a href="#"> 12 цветов </a></li>
+                            <li><a href="#"> 24 цвета </a></li>
+                            <li><a href="#"> 36 цветов </a></li>
                           </ul>
                         </li>
-                        <li class="cross-over"><a href="#">Фломастеры</a>
+                        <li class="cross-over"><a href="#"> Фломастеры </a>
                           <ul class="dropdown-menu style-menu nextLevel">
-                            <li><a href="#">6 цветов</a></li>
-                            <li><a href="#">12 цветов</a></li>
-                            <li><a href="#">24 цвета</a></li>
-                            <li><a href="#">30 цветов</a></li>
+                            <li><a href="#"> 6 цветов </a></li>
+                            <li><a href="#"> 12 цветов </a></li>
+                            <li><a href="#"> 24 цвета </a></li>
+                            <li><a href="#"> 30 цветов </a></li>
                           </ul>
                         </li>
-                        <li><a href="#">Простые карандаши</a></li>
-                        <li><a href="#">Ластики</a></li>
-                        <li><a href="#">Точилки</a></li>
+                        <li><a href="#"> Маркеры </a></li>
+                        <li><a href="#"> Простые карандаши </a></li>
+                        <li><a href="#"> Ластики </a></li>
+                        <li><a href="#"> Точилки </a></li>
                       </ul>
-                    </li> -->
-                    <li><a href="<?php echo URL .'products/l1/'. htmlspch('pens'); ?>"> Ручки <!-- <b class="caret"></b> --></a></li>
-                    <li><a href="#">Новогодние товары</a></li>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#"> Для труда <b class="caret"></b></a>
+                      <ul class="dropdown-menu style-menu nextLevel">
+                        <li class="cross-over"><a href="#"> Папки </a>
+                          <ul class="dropdown-menu style-menu nextLevel">
+                            <li><a href="#"> Формат А4 </a></li>
+                            <li><a href="#"> Формат А5 </a></li>
+                          </ul>
+                        </li>
+                        <li><a href="#"> Пластилин </a></li>
+                        <li><a href="#"> Ножницы </a></li>
+                        <li><a href="#"> Клей </a></li>
+                      </ul>
+                  </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right enter">
                     <li>

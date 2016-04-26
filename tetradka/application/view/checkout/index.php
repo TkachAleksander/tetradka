@@ -6,7 +6,8 @@
             <div class="products col-lg-offset-1 col-lg-10 floor-content">
 
                 <div class="row row-checkout">
-                    <div class="col-lg-7 col-md-7 "> 
+                    <div class="col-lg-7 col-md-7"> 
+                        <!-- <h1 class="text-center MarckScript">Оформление заказа</h1> -->
                         <table class="table table-bordered table-checkout">
                             <tr id="th-checkout" class="active">
                                 <th class="text-center">Имя товара</th>

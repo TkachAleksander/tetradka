@@ -1,7 +1,11 @@
 <?php
 
 class Model
-{
+{   
+    private $tetradka = "Tetradka |";
+    private $title;
+
+
 
     function __construct($db)
     {
@@ -12,7 +16,13 @@ class Model
         }
     }
 
+    function getTitle(){
+        return $this->title;
+    }
+
+
     function getAllProducts(){
+        $this->title = $this->tetradka . " Интернет-магазин канцтоваров ориентированный на мелкий опт в Сумах";
 
         $sql = "SELECT pr.id_prod, pr.name, pr.price, pr.name_img, cat.name as category, cat.caption as nameDir 
                 FROM `products` `pr` 
@@ -121,7 +131,11 @@ class Model
         $result = $this->db->prepare($sql);
         $parameters = array(':id_prod' => $id_prod);
         $result->execute($parameters);
-        return $result->fetch();     
+        $result = $result->fetch();
+
+        $this->title = $this->tetradka ." Купить ". $result->category ." ". $result->name;
+
+        return $result;     
     }
 
     function getNamesCharacteristics($id_prod){
@@ -134,7 +148,9 @@ class Model
         $result = $this->db->prepare($sql);
         $parameters = array(':id_prod' => $id_prod);
         $result->execute($parameters);
-        return $result->fetchAll();
+        $result = $result->fetchAll();
+
+        return $result;
     }
 
     function getValuesCharacteristics($id_prod){  
@@ -165,10 +181,14 @@ class Model
 /***********
     MENU
 ************/
+    private $breadcrumbs = array();
 
+    function getBreadcrumbs(){
+        return $this->breadcrumbs;
+    }
 
     function l1($param1){
-
+        
         $sql = "SELECT pr.id_prod, pr.name, pr.price, pr.name_img, cat.name as category, cat.caption as nameDir 
                 FROM `products` `pr` JOIN `category` `cat` ON pr.id_category = cat.id_category 
                 WHERE cat.caption = :param1 AND pr.show = '1' ";
@@ -176,7 +196,14 @@ class Model
         $result = $this->db->prepare($sql);
         $parameters = array(':param1' => $param1);
         $result->execute($parameters);
-        return $result->fetchAll();
+        $result = $result->fetchAll();
+
+        if ($result[0]->category){ $this->title = $this->tetradka ." Купить ". $result[0]->category;
+        } else { $this->title = $this->tetradka ." Товар находится в дороге "; }
+
+        $this->breadcrumbs = $result[0]->category;
+
+        return $result;
     }
 
     function l2($param1,$param2){
@@ -191,7 +218,12 @@ class Model
         $result = $this->db->prepare($sql);
         $parameters = array(':param1' => $param1, ':param2' => $param2);
         $result->execute($parameters);
-        return $result->fetchAll();
+        $result = $result->fetchAll();
+
+        if ($result[0]->category){ $this->title = $this->tetradka ." Купить ". $result[0]->category ;
+        } else { $this->title = $this->tetradka ." Товар находится в дороге "; }
+
+        return $result;
     }
 
     function l3($param1,$param2,$param3){
@@ -206,7 +238,12 @@ class Model
         $result = $this->db->prepare($sql);
         $parameters = array(':param1' => $param1, ':param2' => $param2,':param3' => $param3);
         $result->execute($parameters);
-        return $result->fetchAll();
+        $result = $result->fetchAll();
+
+        if ($result[0]->category){ $this->title = $this->tetradka ." Купить ". $result[0]->category ;
+        } else { $this->title = $this->tetradka ." Товар находится в дороге "; }
+
+        return $result;
     }
 
     function l4Notebook($param1,$param2,$param3,$param4){
@@ -222,7 +259,12 @@ class Model
         $result = $this->db->prepare($sql);
         $parameters = array(':param1' => $param1, ':param2' => $param2,':param3' => $param3,':param4' => $param4);
         $result->execute($parameters);
-        return $result->fetchAll();
+        $result = $result->fetchAll();
+        
+        if ($result[0]->category){ $this->title = $this->tetradka ." Купить ". $result[0]->category ;
+        } else { $this->title = $this->tetradka ." Товар находится в дороге "; }
+
+        return $result;
     }
 
 
@@ -477,13 +519,13 @@ class Model
 
     
     function addProduct($checkbox_photo, $amount, $category, $product_name, $price, $name_img, $description, $characteristics, $captions){
-        $name_face_img = $name_img."1.jpg";
+        $name_face_img = $name_img."-1.jpg"; 
 
         $sql = "INSERT INTO `products` (name, price, name_img, description, id_category) 
                 VALUES ( :product_name, :price, :name_face_img, :description, :category)";
 
         $result = $this->db->prepare($sql);
-        $parameters = array(':product_name' => $product_name, ':price' => $price, ':name_face_img' => $name_img, ':description' => $description, ':category' => $category[0]);
+        $parameters = array(':product_name' => $product_name, ':price' => $price, ':name_face_img' => $name_face_img, ':description' => $description, ':category' => $category[0]);
         $result->execute($parameters);
 
         $sql = "SELECT id_prod FROM `products` ORDER BY id_prod DESC LIMIT 1";
@@ -512,7 +554,7 @@ class Model
         }
         if (isset($_POST['checkbox_photo']) && $_POST['checkbox_photo'] == 'yes'){
             for($i=1; $i<=$amount; $i++){
-                $img = $name_img.$i.'.jpg';
+                $img = $name_img.'-'.$i.'.jpg';
 
                 $sql = "INSERT INTO `more_photo` (id_prod, name)
                         VALUES (:id_prod, :img)";
@@ -609,4 +651,11 @@ class Model
         $result->execute($parameters);
         return $result->fetchAll();
     }
+
+
+
+
+
+
+
 }
