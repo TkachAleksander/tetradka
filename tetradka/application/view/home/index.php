@@ -24,7 +24,7 @@
 
 					</div>
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-						<img class="img-responsive img-about" src="<?php echo URL; ?>/img/about/stock.jpg">
+						<img class="img-responsive img-about" src="<?php echo URL; ?>/img/about/stock.jpg" alt="Интернет-магазин канцтоваров ориентированный на мелкий опт" title="Интернет-магазин канцтоваров ориентированный на мелкий опт">
 					</div>
 				</div>
 			</div>
@@ -38,7 +38,7 @@
 				        <div class='thumbnail'>
 				            <a class='name-tile' href='<?php echo URL . 'products/moreInfo/' . htmlspecialchars($product->id_prod, ENT_QUOTES, 'UTF-8'); ?>'>
 				                <p class="text-center"> <?php echo $product->category; ?> <?php echo $product->name; ?>  </p>
-				                <img class='img-responsive img-tile' src='<?php echo URL; ?>img/products/<?php echo $product->nameDir; ?>/<?php echo $product->name_img; ?>'>
+				                <img class='img-responsive img-tile' src='<?php echo URL; ?>img/products/<?php echo $product->nameDir; ?>/<?php echo $product->name_img; ?>' alt = '<?php echo $product->category." ".$product->name; ?>' title='<?php echo $product->category." ".$product->name; ?>'>
 				            </a>
 				            <div class='caption'>
 				                <p class='text-center price-tile' id='pr'>

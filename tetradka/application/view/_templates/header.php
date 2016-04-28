@@ -51,7 +51,7 @@
                     <span class="icon-bar"></span>
                   </button>
                 <a href="<?php echo URL; ?>" class="navbar-brand">
-                    <img src="<?php echo URL; ?>public/img/logo/logo.png" class="logo-img img-responsive" height="30" width="50">
+                    <img src="<?php echo URL; ?>public/img/logo/logo.png" class="logo-img img-responsive" height="30" width="50" alt="Интернет магазин канцтоваров Tetradka" title="Интернет магазин канцтоваров Tetradka">
                 </a>
                 <a href="<?php echo URL; ?>" class="logo-text navbar-brand PatuaOne">Tetradka</a>
             </div>
