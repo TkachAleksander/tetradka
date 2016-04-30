@@ -181,12 +181,6 @@ class Model
 /***********
     MENU
 ************/
-    private $breadcrumbs = array();
-
-    function getBreadcrumbs(){
-        return $this->breadcrumbs;
-    }
-
     function l1($param1){
         
         $sql = "SELECT pr.id_prod, pr.name, pr.price, pr.name_img, cat.name as category, cat.caption as nameDir 
@@ -652,10 +646,35 @@ class Model
         return $result->fetchAll();
     }
 
+    // function getBreadcrumbs($id){
 
+    //     $sql = "SELECT name, parent, href FROM `breadcrumbs` WHERE id = $id";
+    //     $result = $this->db->prepare($sql);
+    //     $result->execute();
 
+    //     echo json_encode($result->fetchAll());           
+    // }
+ 
+    private $crumbs = array();
 
+    function getBreadcrumbs($id){ 
+    
+        $sql = "SELECT name, parent, href FROM `breadcrumbs` WHERE id = $id"; 
+        $result = $this->db->prepare($sql); 
+        $result->execute(); 
+        $result = $result->fetchAll(); 
+        
+        // print_r($result[0]->parent); 
+        if ($result[0]->parent != 0){ 
+            array_unshift($this->crumbs, $result[0]->name);
+            $this->getBreadcrumbs($result[0]->parent); 
+        } else { 
+            array_unshift($this->crumbs, $result[0]->name);
+            // $crumbs = $this->crumbs
+            // return $crumbs; 
+        } 
+    }
 
-
+    function getCrumbs(){ return $this->crumbs; }
 
 }

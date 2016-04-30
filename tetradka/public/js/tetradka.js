@@ -76,6 +76,7 @@ function refillBasket(){
 function deleteCookie(){
 	$.cookie('basket', new Array(), { expires: 7, path:'/'});
 	refillBasket();
+	window.location = window.location;
 }
 
 function basketPlus(code){
@@ -321,3 +322,19 @@ function showProduct(id_prod, bool){
 	});
 		location.reload();	
 }
+
+// function getBreadcrumbs(id){ 
+// 	$.ajax({
+// 		type: "POST",
+// 		url: "/home/getBreadcrumbs",
+// 		data: { id: id },
+// 		dataType: "json",
+// 		success: function(data){
+// 			$('.breadcrumb').prepend('<li><a href="'+data[0].href+'">'+data[0].name+'</a></li>');
+// 			if (data[0].parent !=0){
+// 				getBreadcrumbs(data[0].parent);
+// 			}
+// 			console.log(data);
+// 		}
+// 	});
+// }

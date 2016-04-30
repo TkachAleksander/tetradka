@@ -46,12 +46,12 @@
                                     <?php foreach ($morePhotos as $photo) : ?>
                                     <div class="col-md-6 col-sm-6 col-xs-6 big-img-margin">
                                         <a class="fancyimage" data-fancybox-group="group" href="<?php echo URL; ?>img/products/<?php echo $product->nameDir; ?>/<?php echo $photo->name_photo; ?>">
-                                            <img class="img-responsive img-thumbnail"  src="<?php echo URL; ?>img/products/<?php echo $product->nameDir; ?>/<?php echo $photo->name_photo; ?>" alt="Фото <?php echo  $product->category.' '.$photo->name_photo; ?>" title="Фото <?php echo $product->category.' '.$photo->name_photo; ?>" >
+                                            <img class="img-responsive img-thumbnail"  src="<?php echo URL; ?>img/products/<?php echo $product->nameDir; ?>/<?php echo $photo->name_photo; ?>" alt="<?php echo $product->category.' '.$photo->name_photo; ?>" title="<?php echo $product->category.' '.$photo->name_photo; ?>" >
                                         </a>
                                     </div>
                                     <?php endforeach; if ($morePhotos == null){  
                                         echo '<a class="fancyimage" data-fancybox-group="group" href="'.URL.'img/products/'.$product->nameDir.'/'.$product->name_img.'">
-                                            <img class="img-responsive img-thumbnail one-more-photo"  src="'.URL.'img/products/'.$product->nameDir.'/'.$product->name_img.'" alt="Фото '.$product->category.' '.$product->name_img.'" title="Фото '.$product->category.' '.$product->name_img.'" >
+                                            <img class="img-responsive img-thumbnail one-more-photo"  src="'.URL.'img/products/'.$product->nameDir.'/'.$product->name_img.'" alt="Фото '.$product->category.' '.$product->name_img.'" title="'.$product->category.' '.$product->name_img.'" >
                                         </a>';
                                      } ?>
                                                 

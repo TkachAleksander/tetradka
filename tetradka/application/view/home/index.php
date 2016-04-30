@@ -30,6 +30,12 @@
 			</div>
 
 			<div class="col-lg-offset-1 col-lg-10 floor-content">
+			    <ol class="breadcrumb">
+			    	<?php foreach ($crumbs as $crumb) { ?>
+						<li><a href=""> <?php echo $crumb;?></a></li>
+					<?php } ?>
+	            </ol>
+
 				<div class="row " id="content-tiles">
 				
 				    <?php foreach ($products as $product) : ?>

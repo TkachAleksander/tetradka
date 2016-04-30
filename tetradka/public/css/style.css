@@ -8,7 +8,7 @@ body{
 	background-color: #EAEAEA;
 	margin-bottom: 50px;
 }
-a:hover{text-decoration: none;}
+a:hover, a:focus{text-decoration: none;}
 
 .MarckScript{
 	font-family: 'Marck Script', cursive;
@@ -167,6 +167,9 @@ a:hover{text-decoration: none;}
 	margin-bottom: 40px; 
 	padding: 40px 40px 30px;
 }
+.floor-content{
+	padding: 15px 40px 30px;
+}
 .floor-about{
 	padding: 40px;
 }
@@ -204,9 +207,11 @@ a:hover{text-decoration: none;}
 	color: #000;
 }
 .img-tile{
-	width: 135px;
+	/*width: 135px;*/
 	max-height: 180px;
-	min-height: 180px;
+	max-width: 135px;
+/*	max-height: 180px;
+	min-height: 180px;*/
 }
 .price-tile{
 	font-family: 'Kelly Slab', cursive;
@@ -327,7 +332,14 @@ a:hover{text-decoration: none;}
 ***********/
 .breadcrumb{
 	background-color: rgba(0,0,0,0);
+	border-radius: 0px;
+	border-bottom: 1px solid #ddd;
 }
+/*.breadcrumb> li:last-child  > a{
+	color: red;
+	pointer-events: none;
+	cursor: default;
+}*/
 
 
 /***********

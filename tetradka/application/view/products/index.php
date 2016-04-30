@@ -2,13 +2,11 @@
     <div class="col-md-12 ">
         <div class="row">
 
-            <div class="col-lg-offset-1 col-lg-10 floor-about">
+            <div class="col-lg-offset-1 col-lg-10 floor-content">
 
-<!--             <ol class="breadcrumb">
-                <li><a href="<?php echo URL;?>">Главная</a></li>
-                <li><?php echo $breadcrumb;?></li>
-
-            </ol> -->
+            <ol class="breadcrumb">
+                <?php   ?>
+            </ol>
                 <div class="row " id="content-tiles">
 
 <!-- <pre> <?php print_r($breadcrumb)?> </pre> -->
