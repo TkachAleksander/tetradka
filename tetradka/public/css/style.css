@@ -8,7 +8,8 @@ body{
 	background-color: #EAEAEA;
 	margin-bottom: 50px;
 }
-a:hover, a:focus{text-decoration: none;}
+a{color: #000;}
+a:hover, a:focus{text-decoration: none; color: #000;}
 
 .MarckScript{
 	font-family: 'Marck Script', cursive;
@@ -203,6 +204,10 @@ a:hover, a:focus{text-decoration: none;}
 	font-size: 24px;
 	color: #075f8d;
 }
+.tile:hover > .thumbnail > a{
+	/*color: #1EB5A9;*/
+	color: #000;
+}
 .name-tile:hover{
 	color: #000;
 }
@@ -335,11 +340,11 @@ a:hover, a:focus{text-decoration: none;}
 	border-radius: 0px;
 	border-bottom: 1px solid #ddd;
 }
-/*.breadcrumb> li:last-child  > a{
-	color: red;
+.breadcrumb> li:last-child  > a{
+	color: #848484;
 	pointer-events: none;
 	cursor: default;
-}*/
+}
 
 
 /***********

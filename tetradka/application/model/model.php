@@ -240,7 +240,7 @@ class Model
         return $result;
     }
 
-    function l4Notebook($param1,$param2,$param3,$param4){
+    function l4($param1,$param2,$param3,$param4){
         $sql = "SELECT pr.id_prod, pr.name, pr.price, pr.name_img, cat.name as category, cat.caption as nameDir
                 FROM `products` `pr` 
                 JOIN `category` `cat` ON pr.id_category = cat.id_category 
@@ -645,36 +645,22 @@ class Model
         $result->execute($parameters);
         return $result->fetchAll();
     }
-
-    // function getBreadcrumbs($id){
-
-    //     $sql = "SELECT name, parent, href FROM `breadcrumbs` WHERE id = $id";
-    //     $result = $this->db->prepare($sql);
-    //     $result->execute();
-
-    //     echo json_encode($result->fetchAll());           
-    // }
  
     private $crumbs = array();
-
     function getBreadcrumbs($id){ 
     
-        $sql = "SELECT name, parent, href FROM `breadcrumbs` WHERE id = $id"; 
-        $result = $this->db->prepare($sql); 
-        $result->execute(); 
+        $sql = "SELECT name, parent, href FROM `breadcrumbs` WHERE id = :id"; 
+        $result = $this->db->prepare($sql);
+        $parameters = array(':id' => $id);
+        $result->execute($parameters); 
         $result = $result->fetchAll(); 
         
-        // print_r($result[0]->parent); 
         if ($result[0]->parent != 0){ 
-            array_unshift($this->crumbs, $result[0]->name);
+            array_unshift($this->crumbs, $result[0]->name, $result[0]->href);
             $this->getBreadcrumbs($result[0]->parent); 
         } else { 
-            array_unshift($this->crumbs, $result[0]->name);
-            // $crumbs = $this->crumbs
-            // return $crumbs; 
+            array_unshift($this->crumbs, $result[0]->name, $result[0]->href);
         } 
+        return $this->crumbs;
     }
-
-    function getCrumbs(){ return $this->crumbs; }
-
 }

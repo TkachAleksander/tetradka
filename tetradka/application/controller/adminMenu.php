@@ -213,6 +213,7 @@ class AdminMenu extends Controller
             $products = $this->model->searchProducts($_POST['code']);
             if (isset($_POST['btn_delete'])){
                 $this->model->deleteProducts($_POST['code']);
+                header("Location: " . URL . "adminMenu/deleteProducts");
             }
 
             require APP . 'view/_templates/header_admin.php';

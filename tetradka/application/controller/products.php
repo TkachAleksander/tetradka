@@ -29,45 +29,55 @@ class Products extends Controller
         require APP . 'view/_templates/footer.php'; 
     }
 
-    public function l1($param1){
-                
+    public function l1($idCrumb,$param1){
         if(isset($param1)){
             $products = $this->model->l1($param1);
             $title= $this->model->getTitle();
         }
+        if(isset($idCrumb)){
+            $crumbs = $this->model->getBreadcrumbs($idCrumb);
+        }
         require APP . 'view/_templates/header.php';
         require APP . 'view/products/index.php';
         require APP . 'view/_templates/footer.php';
     }
 
-    public function l2($param1,$param2){
+    public function l2($idCrumb,$param1,$param2){
         if (isset($param1,$param2)){
             $products = $this->model->l2($param1,$param2);
             $title= $this->model->getTitle();
         }
+        if(isset($idCrumb)){
+            $crumbs = $this->model->getBreadcrumbs($idCrumb);
+        }
         require APP . 'view/_templates/header.php';
         require APP . 'view/products/index.php';
         require APP . 'view/_templates/footer.php';
     }
 
-    public function l3($param1,$param2,$param3){
+    public function l3($idCrumb,$param1,$param2,$param3){
         if (isset($param1,$param2,$param3)){
             $products = $this->model->l3($param1,$param2,$param3);
             $title= $this->model->getTitle();
         }
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/products/index.php';
-        require APP . 'view/_templates/footer.php';        
-    }
-
-    public function l4($param1,$param2,$param3,$param4){
-        if (isset($param1,$param2,$param3,$param4)){
-            $products = $this->model->l4Notebook($param1,$param2,$param3,$param4);
-            $title= $this->model->getTitle();
+        if(isset($idCrumb)){
+            $crumbs = $this->model->getBreadcrumbs($idCrumb);
         }
         require APP . 'view/_templates/header.php';
         require APP . 'view/products/index.php';
         require APP . 'view/_templates/footer.php';        
     }
 
+    public function l4($idCrumb,$param1,$param2,$param3,$param4){
+        if (isset($param1,$param2,$param3,$param4)){
+            $products = $this->model->l4($param1,$param2,$param3,$param4);
+            $title= $this->model->getTitle();
+        }
+        if(isset($idCrumb)){
+            $crumbs = $this->model->getBreadcrumbs($idCrumb);
+        }
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/products/index.php';
+        require APP . 'view/_templates/footer.php';        
+    }
 }
