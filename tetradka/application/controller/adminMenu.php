@@ -115,6 +115,8 @@ class AdminMenu extends Controller
         $is_admin = $this->model->is_admin();
 
         if($is_admin){ 
+            $breadcrumbs = $this->model->getAllBreadcrumbs();
+
             $allCategories = $this->model->getAllCategories();
             $allCharacteristics = $this->model->getAllCharacteristics();
             $allListCharacteristics = $this->model->getAllListCharacteristics();
@@ -125,6 +127,13 @@ class AdminMenu extends Controller
         } else { 
             header("Location: " . URL);
         }   
+    }
+
+    public function addBreadcrumbs(){
+        if (isset($_POST['btn-add-breadcrumbs'])){
+            $this->model->addBreadcrumbs($_POST['name'],$_POST['parent'],$_POST['href']);
+        } 
+        header("Location: " . URL . "adminMenu/databaseControl");        
     }
 
 
@@ -165,6 +174,12 @@ class AdminMenu extends Controller
             $this->model->deleteListCharact($_POST['id_list_charact']);
         } 
         header("Location: " . URL . "adminMenu/databaseControl");         
+    }
+    public function deleteBreadcrumbs(){
+        if (isset($_POST['btn-dlt-db-control'])){
+            $this->model->deleteBreadcrumbs($_POST['id_breadcrumbs']);
+        } 
+        header("Location: " . URL . "adminMenu/databaseControl");        
     }
 
 

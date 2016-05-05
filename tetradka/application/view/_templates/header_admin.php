@@ -52,7 +52,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav firstMenu style-menu">
                     <li class="dropdown">
-                        <a href="#"> Управление товарами </a>
+                        <a href="#"> Управление товарами <b class="caret caret-menu"></b></a>
                         <ul class="dropdown-menu style-menu nextLevel">     
                             <li><a href="<?php echo URL; ?>adminMenu/showAllProducts"> Просмотр </a></li>                       
                             <li><a href="<?php echo URL; ?>adminMenu/addProducts"> Добавить </a></li>

@@ -126,6 +126,9 @@ a:hover, a:focus{text-decoration: none; color: #000;}
    						width: 5px;
    						float: right;
 }
+.cross-over:hover > a {
+	color: #fff;
+}
 .cross-over:hover > a::after {
 	border-left: 1px solid #337ab7;
    	border-top: 1px solid #337ab7;

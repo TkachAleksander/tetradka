@@ -94,21 +94,21 @@
                             <ul class="dropdown-menu style-menu nextLevel">
                               <li class="cross-over"><a href="<?php echo URL .'products/l3/7/'. htmlspch('notebooks') .'/'. htmlspch('ofset') .'/'. htmlspch('cell'); ?>" > Клетка </a>
                                 <ul class="dropdown-menu style-menu nextLevel">
-                                  <li><a href="<?php echo URL .'products/l4/'. htmlspch('notebooks') .'/'. htmlspch('ofset') .'/'. htmlspch('cell') .'/'. htmlspch('12'); ?>" > 12 листков </a></li>
-                                  <li><a href="<?php echo URL .'products/l4/'. htmlspch('notebooks') .'/'. htmlspch('ofset') .'/'. htmlspch('cell') .'/'. htmlspch('18'); ?>" > 18 листков </a></li>
-                                  <li><a href="<?php echo URL .'products/l4/'. htmlspch('notebooks') .'/'. htmlspch('ofset') .'/'. htmlspch('cell') .'/'. htmlspch('24'); ?>" > 24 листа   </a></li>
+                                  <li><a href="<?php echo URL .'products/l4/24/'. htmlspch('notebooks') .'/'. htmlspch('ofset') .'/'. htmlspch('cell') .'/'. htmlspch('12'); ?>" > 12 листков </a></li>
+                                  <li><a href="<?php echo URL .'products/l4/25/'. htmlspch('notebooks') .'/'. htmlspch('ofset') .'/'. htmlspch('cell') .'/'. htmlspch('18'); ?>" > 18 листков </a></li>
+                                  <li><a href="<?php echo URL .'products/l4/26/'. htmlspch('notebooks') .'/'. htmlspch('ofset') .'/'. htmlspch('cell') .'/'. htmlspch('24'); ?>" > 24 листа   </a></li>
                                 </ul>
                               </li>
                               <li class="cross-over"><a href="<?php echo URL .'products/l3/8/'. htmlspch('notebooks') .'/'. htmlspch('ofset') .'/'. htmlspch('line') ;?>" > Линия </a>
                                 <ul class="dropdown-menu style-menu nextLevel">
-                                  <li><a href="<?php echo URL .'products/l4/'. htmlspch('notebooks') .'/'. htmlspch('ofset') .'/'. htmlspch('line') .'/'. htmlspch('12'); ?>" > 12 листков </a></li>
-                                  <li><a href="<?php echo URL .'products/l4/'. htmlspch('notebooks') .'/'. htmlspch('ofset') .'/'. htmlspch('line') .'/'. htmlspch('18'); ?>" > 18 листков </a></li>
-                                  <li><a href="<?php echo URL .'products/l4/'. htmlspch('notebooks') .'/'. htmlspch('ofset') .'/'. htmlspch('line') .'/'. htmlspch('24'); ?>" > 24 листа   </a></li>
+                                  <li><a href="<?php echo URL .'products/l4/27/'. htmlspch('notebooks') .'/'. htmlspch('ofset') .'/'. htmlspch('line') .'/'. htmlspch('12'); ?>" > 12 листков </a></li>
+                                  <li><a href="<?php echo URL .'products/l4/28/'. htmlspch('notebooks') .'/'. htmlspch('ofset') .'/'. htmlspch('line') .'/'. htmlspch('18'); ?>" > 18 листков </a></li>
+                                  <li><a href="<?php echo URL .'products/l4/29/'. htmlspch('notebooks') .'/'. htmlspch('ofset') .'/'. htmlspch('line') .'/'. htmlspch('24'); ?>" > 24 листа   </a></li>
                                 </ul>
                               </li>
                               <li class="cross-over"><a href="<?php echo URL .'products/l3/9/'. htmlspch('notebooks') .'/'. htmlspch('ofset') .'/'. htmlspch('slanting'); ?>" > Косая </a>
                                 <ul class="dropdown-menu style-menu nextLevel">
-                                  <li><a href="<?php echo URL .'products/l4/'. htmlspch('notebooks') .'/'. htmlspch('ofset') .'/'. htmlspch('slanting') .'/'. htmlspch('12'); ?>" > 12 листков </a></li>
+                                  <li><a href="<?php echo URL .'products/l4/30/'. htmlspch('notebooks') .'/'. htmlspch('ofset') .'/'. htmlspch('slanting') .'/'. htmlspch('12'); ?>" > 12 листков </a></li>
                                 </ul>
                               </li>
                             </ul>
@@ -118,7 +118,7 @@
                     <li class="dropdown">
                       <a href="#"> Для рисования <b class="caret"></b></a>
                       <ul class="dropdown-menu style-menu nextLevel">
-                        <li><a href="<?php echo URL .'products/l1/'. htmlspch('pens'); ?>"> Ручки </a></li>
+                        <li><a href="<?php echo URL .'products/l1/31/'. htmlspch('pens'); ?>"> Ручки </a></li>
                         <li class="cross-over"><a href="<?php echo URL .'products/l1/4/'. htmlspch('album'); ?>">Альбомы</a>
                           <ul class="dropdown-menu style-menu nextLevel">
                             <li><a href="<?php echo URL .'products/l2/4/'. htmlspch('album') .'/'. htmlspch('12'); ?>"> 12 листов </a></li>

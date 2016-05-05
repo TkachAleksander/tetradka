@@ -75,8 +75,6 @@
 
 		<div class="row">
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 floor-admin">
-				<div class="col-lg-12">
-
 					<table class="table table-bordered">
 						<tbody>
 							<tr>
@@ -101,13 +99,9 @@
 							
 						</tbody>
 					</table>
-
-				</div>
 			</div>
 
 			<div class=" col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-5 col-md-5 col-sm-5 col-xs-5 floor-admin">
-				<div class="col-lg-12">
-
 					<table class="table table-bordered">
 						<tbody>
 							<tr>
@@ -130,8 +124,6 @@
 							
 						</tbody>
 					</table>
-
-				</div>
 			</div>
 		</div>
 

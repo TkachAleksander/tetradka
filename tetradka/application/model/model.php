@@ -428,8 +428,13 @@ class Model
 /******************
  DATA BASE CONTROL
 *******************/
+    function getAllBreadcrumbs(){
+        $sql = "SELECT id, name, parent, href FROM `breadcrumbs` ORDER BY id DESC";
 
-
+        $result = $this->db->prepare($sql);
+        $result->execute();
+        return $result->fetchAll();
+    }
     function getAllCategories(){
         $sql = "SELECT * FROM `category`";
 
@@ -453,6 +458,13 @@ class Model
     }
 
 
+    function addBreadcrumbs($name, $parent, $href){
+        $sql = "INSERT INTO `breadcrumbs` (name, parent, href) VALUES (:name, :parent, :href)";
+
+        $result = $this->db->prepare($sql);
+        $parameters = array(':name' => $name, ':parent' => $parent, ':href' => $href);
+        $result->execute($parameters);
+    }
     function addNewCategory($nameNewCategory,$captionNewCategory){
         $sql = "INSERT INTO `category` (name, caption) VALUES (:nameNewCategory, :captionNewCategory)";
 
@@ -477,25 +489,32 @@ class Model
 
 
     function deleteCategory($id_category){
-        $sql = "DELETE FROM `category` WHERE :id_category = id_category";
+        $sql = "DELETE FROM `category` WHERE id_category = :id_category";
 
         $result = $this->db->prepare($sql);
         $parameters = array(':id_category' => $id_category);
         $result->execute($parameters);
     }
     function deleteCharact($id_charact){
-        $sql = "DELETE FROM `characteristics` WHERE :id_charact = id_charact";
+        $sql = "DELETE FROM `characteristics` WHERE id_charact = :id_charact";
 
         $result = $this->db->prepare($sql);
         $parameters = array(':id_charact' => $id_charact);
         $result->execute($parameters);        
     }
     function deleteListCharact($id_list_charact){
-        $sql = "DELETE FROM `list_characteristics` WHERE :id_list_charact = id_list_charact";
+        $sql = "DELETE FROM `list_characteristics` WHERE id_list_charact = :id_list_charact";
 
         $result = $this->db->prepare($sql);
         $parameters = array(':id_list_charact' => $id_list_charact);
         $result->execute($parameters);  
+    }
+    function deleteBreadcrumbs($id_breadcrumbs){
+        $sql = "DELETE FROM `breadcrumbs` WHERE id = :id_breadcrumbs";
+
+        $result = $this->db->prepare($sql);
+        $parameters = array(':id_breadcrumbs' => $id_breadcrumbs);
+        $result->execute($parameters); 
     }
 
 
