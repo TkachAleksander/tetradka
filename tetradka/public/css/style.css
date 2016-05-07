@@ -565,3 +565,70 @@ a:hover, a:focus{text-decoration: none; color: #000;}
 		padding-left: 5px;
 	}
 }
+@media (min-width: 768px){
+	.icon-open{
+		display: none;
+	}
+}
+
+
+
+/* MOBILE MENU */
+.icon-open, .icon-close {
+  	position: fixed;
+  	right: 20px;
+  	top: 16px;
+  	z-index: 1100;
+  	color: #fff;
+  	cursor: pointer;
+  	font-family: 'Open Sans', sans-serif;
+  	font-size: 20px;
+  	text-decoration: none;
+}
+
+/*.icon-close {
+  	cursor: pointer;
+  	padding-left: 10px;
+  	padding-top: 10px;
+  	padding-bottom: 6px;
+}*/
+
+.menu {
+	padding-top: 70px;
+  	background: #555 url('images/menu-bg.jpg') repeat left top;
+  	right: -285px;
+  	height: 100%;
+  	position: fixed;
+  	width: 285px;
+  	z-index: 1;
+}
+
+.menu ul {
+  	border-top: 1px solid #555;
+  	list-style: none;
+  	margin: 0;
+  	padding: 0;
+}
+
+.menu li {
+	padding-top: 80px;
+	border-bottom: 1px solid #555;
+	font-family: 'Open Sans', sans-serif;
+	line-height: 45px;
+	padding-bottom: 3px;
+	padding-left: 20px;
+	padding-top: 3px;
+}
+
+.menu li:hover {
+  	cursor: pointer;
+  	background-color: #555;
+}
+
+.menu a {
+  	color: #fff;
+  	font-size: 15px;
+  	text-decoration: none;
+}
+
+

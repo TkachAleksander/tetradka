@@ -322,3 +322,52 @@ function showProduct(id_prod, bool){
 	});
 		location.reload();	
 }
+
+/*
+** mobile menu --------------------------------------------------------------------------------------------
+*/
+/* клик в необласти .unclick закроет меню */
+jQuery(function($){
+    $(document).mouseup(function (e){ // событие клика по веб-документу
+        var div = $(".unclick"); // тут указываем ID элемента
+        if (!div.is(e.target) // если клик был не по нашему блоку
+            && div.has(e.target).length === 0) { // и не по его дочерним элементам
+        		$('.menu').animate({ 
+            		right: '-285px',
+					width: '0%'
+        		}, 400);
+        }
+    });
+});
+
+
+/* Открытие меню */
+var main = function() { //главная функция
+    $('.icon-open').click(function() { 
+
+        $('.menu').animate({ 
+            right: '0px', 
+			width: '100%'
+        }, 400); //скорость движения меню в мс
+        $('.icon-open').addClass('icon-close');
+        $('.icon-open').removeClass('icon-open');
+    });
+
+/* Закрытие меню */
+    $('.icon-close').click(function() { 
+
+        $('.menu').animate({ 
+            right: '-285px',
+			width: '0%'
+        }, 400); //скорость движения меню в мс
+    });
+    
+};
+
+$(document).ready(main); //как только страница полностью загрузится, будет вызвана функция main, отвечающая за работу меню
+$(document).ready(
+
+    function() {
+        $(".menu .next").hide();
+        $(".menu .open").click(function() { $(this).next().slideToggle("normal"); });
+    });

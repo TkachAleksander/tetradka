@@ -44,12 +44,6 @@
     <nav class="navbar navbar-inverse navbar-static-top navbar-fixed-top" role="navigation">
         <div class="container-fluid container-fluid-menu MarckScript">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                  </button>
                 <a href="<?php echo URL; ?>" class="navbar-brand">
                     <img src="<?php echo URL; ?>public/img/logo/logo.png" class="logo-img img-responsive" height="30" width="50" alt="Интернет магазин канцтоваров Tetradka" title="Интернет магазин канцтоваров Tetradka">
                 </a>
@@ -220,12 +214,6 @@
   <nav class="navbar navbar-inverse navbar-fixed-top mobile-menu" role="navigation">
     <div class="container">
       <div class="navbar-header">
-          <button type="button" class="navbar-toggle btn-mobile-menu" >
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
           <a href="<?php echo URL; ?>" class="navbar-brand">
               <img src="<?php echo URL; ?>public/img/logo/logo.png" class="logo-img img-responsive" height="30" width="50">
             </a>
@@ -233,3 +221,38 @@
           </div> 
     </div>
   </nav>
+
+   <!-- MOBILE MENU -->
+
+  <div class="icon-open">
+<span class="glyphicon glyphicon-align-justify"></span>
+  </div>
+  
+  <div class="menu unclick">
+
+    <!-- <div class="icon-close"> -->
+<!--       <span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span> -->
+        <!--img src="images/close-btn.png"-->
+    <!-- </div> -->
+
+    <ul>
+        <li class="open"><a href="#"> Тетради </a></li>
+        <ul class="next">
+            <li class="open"><a href="#"> Цветные </a></li>
+            <ul class="next">
+                <li><a href="#"> Клетка </a></li>
+                <li><a href="#"> Линия </a></li>
+            </ul>
+            <li class="open"><a href="#"> Офсет </a></li>
+            <ul class="next">
+                <li><a href="#"> Клетка </a></li>
+                <li><a href="#"> Линия </a></li>
+            </ul>
+        </ul>
+        <li><a href="#"> Ручки </a></li>
+        <li><a href="#"> Альбомы </a></li>
+        <li><a href="#"> Краски </a></li>
+    </ul>
+  </div>

@@ -39,9 +39,9 @@
 
                             <div class="g-recaptcha" data-sitekey="6LdaEB4TAAAAAODS86yvVGhD5fDiPxhXjD31qw68"></div>
 
-                            <a href="<?php echo URL; ?>"><button class="btn btn-primary btn-checkout"> Продолжить покупки </button></a>
                             <button type="submit" class="btn btn-success btn-checkout pull-right" onclick="newOrder()"><b> Отправить </b></button>
                         </form>
+                        <a href="<?php echo URL; ?>"><button class="btn btn-primary btn-checkout"> Продолжить покупки </button></a>
                     </div>
                 </div>
 
