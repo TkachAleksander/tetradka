@@ -7,21 +7,21 @@
     <title><?php echo "Tetradka"; ?></title>
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>css/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>css/jquery.fancybox.css">
     <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>css/bootstrap-select.css">
   
     <!-- JS -->
     <script type="text/javascript" src="<?php echo URL; ?>js/jquery.min.js"></script>
-    <script type="text/javascript" src="<?php echo URL; ?>js/bootstrap.js"></script>
+    <script type="text/javascript" src="<?php echo URL; ?>js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>js/jquery.cookie.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>js/jquery.fancybox.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>js/jquery.fancybox.pack.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>js/tetradka.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>js/jquery.mask.js"></script>
-    <script type="text/javascript" src="<?php echo URL; ?>js/bootstrap-select.js"></script>
-    <script type="text/javascript" src="<?php echo URL; ?>js/i18n/defaults-ru_RU.js"></script>
+    <script type="text/javascript" src="<?php echo URL; ?>js/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="<?php echo URL; ?>js/i18n/defaults-ru_RU.min.js"></script>
 
     <!-- FONTS -->
     <link rel="icon" type="img/ico" href="<?php echo URL; ?>/img/logo/favicon.ico">
