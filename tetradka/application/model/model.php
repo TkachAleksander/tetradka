@@ -359,7 +359,7 @@ class Model
 
     function getRequestedOrders($status){
 
-        $sql = "SELECT * FROM `orders` WHERE status = :status";
+        $sql = "SELECT * FROM `orders` WHERE status = :status ORDER BY id DESC";
 
         $result = $this->db->prepare($sql);
         $parameters = array(':status' => $status);

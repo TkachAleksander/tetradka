@@ -11,12 +11,14 @@
                             <tr id="th-checkout" class="active">
                                 <th class="text-center">Имя товара</th>
                                 <th class="text-center">Фото</th> 
-                                <th class="text-center">Код</th>  
-                                <th class="text-center">Количество</th>
+                                <th class="text-center hide-mobile ">Код</th>  
+                                <th class="text-center hide-pc">Кол.</th>
+                                <th class="text-center hide-mobile">Количество</th>
                                 <th class="text-center">Цена</th>
                             </tr>
                             <tr>
-                                <td colspan="3"></td>
+                                <td colspan="3" class="hide-mobile"></td>
+                                <td colspan="2" class="hide-pc"></td>
                                 <td class="text-center"><b>Сумма</b></td>
                                 <td id="summa-checkout" class="text-center">0 грн</td>
                             </tr>                 
@@ -39,9 +41,9 @@
 
                             <div class="g-recaptcha" data-sitekey="6LdaEB4TAAAAAODS86yvVGhD5fDiPxhXjD31qw68"></div>
 
-                            <button type="submit" class="btn btn-success btn-checkout pull-right" onclick="newOrder()"><b> Отправить </b></button>
+                            <button type="submit" class="btn btn-success btn-checkout pull-left" onclick="newOrder()"><b> Заказать </b></button>
                         </form>
-                        <a href="<?php echo URL; ?>"><button class="btn btn-primary btn-checkout"> Продолжить покупки </button></a>
+                        <a href="<?php echo URL; ?>"><button class="btn btn-default btn-checkout pull-right"> Продолжить покупки </button></a>
                     </div>
                 </div>
 

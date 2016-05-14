@@ -25,7 +25,8 @@
     <script type="text/javascript" src="<?php echo URL; ?>js/jquery.mask.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>js/bootstrap-select.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>js/i18n/defaults-ru_RU.js"></script>
-
+    <script type="text/javascript" src="<?php echo URL; ?>js/jquery.mobile.custom.js"></script>
+    <script type="text/javascript" src="<?php echo URL; ?>js/jquery.rotate.js"></script>
     <!-- FONTS -->
     <link rel="icon" type="img/ico" href="<?php echo URL; ?>/img/logo/favicon.ico">
     <link href='https://fonts.googleapis.com/css?family=Marck+Script&subset=latin,cyrillic' rel='stylesheet' type='text/css'> <!-- Основной -->
@@ -35,12 +36,12 @@
     
     <!-- RECAPTCHA -->
     <script src='https://www.google.com/recaptcha/api.js'></script>
-
+    <?php include "other.php";?>
 
     
 </head>
 <body>
-
+    
     <nav class="navbar navbar-inverse navbar-static-top navbar-fixed-top" role="navigation">
         <div class="container-fluid container-fluid-menu MarckScript">
             <div class="navbar-header">
@@ -172,87 +173,6 @@
         </div>
     </nav>
 
-  <!-- BASKET -->
-  <div class="modal fade" onclick="fillCheckout()" id="basket" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="fillCheckout()">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Корзина</h4>
-      </div>
-      <div class="modal-body">
-        <table class="table table-bordered table-basket">
-          <tr id="th-basket" class="active">
-            <th class="text-center">Имя товара</th>
-            <th class="text-center">Фото</th> 
-            <th class="text-center">Код</th>
-            <th class="text-center">Количество</th>
-            <th class="text-center">Цена</th>
-          </tr>
-          <tr>
-            <td colspan="3"></td>
-            <td class="text-center"><b>Сумма</b></td> 
-            <td id="summa-basket" class="text-center">0 грн</td>
-          </tr>
-        </table>
-      </div> 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default btn-sm" onclick="deleteCookie()"><b> Очистить корзину </b></button>
-        <a href="<?php echo URL; ?>checkout "><button type="button" class="btn btn-success btn-sm"><b> Оформить заказ </b></button></a>
-      </div>
-    </div>
-  </div> 
-  </div>
 
-  <!-- MESSAGE ADD IN BASKET -->
-  <div class="addInBasket MarckScript">
-    Товар добавлен в корзину
-    <div id="off" onclick="offAnimation()">  X  </div>
-  </div> 
 
-  <!-- MOBILE HEADER -->
-  <nav class="navbar navbar-inverse navbar-fixed-top mobile-menu" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-          <a href="<?php echo URL; ?>" class="navbar-brand">
-              <img src="<?php echo URL; ?>public/img/logo/logo.png" class="logo-img img-responsive" height="30" width="50">
-            </a>
-            <a href="<?php echo URL; ?>" class="logo-text navbar-brand PatuaOne">Tetradka</a>
-          </div> 
-    </div>
-  </nav>
-
-   <!-- MOBILE MENU -->
-
-  <div class="icon-open">
-<span class="glyphicon glyphicon-align-justify"></span>
-  </div>
   
-  <div class="menu unclick">
-
-    <!-- <div class="icon-close"> -->
-<!--       <span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span> -->
-        <!--img src="images/close-btn.png"-->
-    <!-- </div> -->
-
-    <ul>
-        <li class="open"><a href="#"> Тетради </a></li>
-        <ul class="next">
-            <li class="open"><a href="#"> Цветные </a></li>
-            <ul class="next">
-                <li><a href="#"> Клетка </a></li>
-                <li><a href="#"> Линия </a></li>
-            </ul>
-            <li class="open"><a href="#"> Офсет </a></li>
-            <ul class="next">
-                <li><a href="#"> Клетка </a></li>
-                <li><a href="#"> Линия </a></li>
-            </ul>
-        </ul>
-        <li><a href="#"> Ручки </a></li>
-        <li><a href="#"> Альбомы </a></li>
-        <li><a href="#"> Краски </a></li>
-    </ul>
-  </div>

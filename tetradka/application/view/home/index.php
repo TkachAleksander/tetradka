@@ -1,13 +1,15 @@
-<?php  if ( isset($_COOKIE['newOrder']) ) { ?>
+<?php  if (isset($_COOKIE['newOrder'])) { ?>
 
-  <div class="align_center_to_left">
+<script type="text/javascript"> deleteCookieNotReload()</script>
+
+<div class="align_center_to_left">
     <div class="alert alert-success alert-dismissible fade in align_center_to_right text-center" role="alert" >
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="deleteNewOrder()">
-        <span aria-hidden="true">&times;</span>
-      </button>
+      	<button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="deleteNewOrder()">
+      	  	<span aria-hidden="true">&times;</span>
+      	</button>
       <strong> Ваш заказ принят! </strong> В ближайшее время мы свяжемся с вами для подтверждения заказа.
     </div>
-  </div>
+</div>
 
 <?php } ?>
 
@@ -27,7 +29,9 @@
 						<img class="img-responsive img-about" src="<?php echo URL; ?>/img/about/stock.jpg" alt="Интернет-магазин канцтоваров ориентированный на мелкий опт" title="Интернет-магазин канцтоваров ориентированный на мелкий опт">
 					</div>
 				</div>
-			</div>
+	    	</div>
+ 	    	
+
 
 			<div class="col-lg-offset-1 col-lg-10 floor-content">
 			    <ol class="breadcrumb">

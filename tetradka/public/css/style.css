@@ -3,7 +3,7 @@
 html{
 	position: relative;
     min-height: 100%;
-}
+} 
 body{
 	background-color: #EAEAEA;
 	margin-bottom: 50px;
@@ -342,13 +342,20 @@ a:hover, a:focus{text-decoration: none; color: #000;}
 	background-color: rgba(0,0,0,0);
 	border-radius: 0px;
 	border-bottom: 1px solid #ddd;
+
 }
 .breadcrumb> li:last-child  > a{
 	color: #848484;
 	pointer-events: none;
 	cursor: default;
+	text-shadow: 0px 0px 0px #fff;
 }
-
+.breadcrumb> li:hover > a{
+	text-shadow: 1px 1px 1px #ddd;
+}
+.breadcrumb> li:hover:last-child > a{
+	text-shadow: none;
+}
 
 /***********
    BASKET
@@ -402,6 +409,22 @@ a:hover, a:focus{text-decoration: none; color: #000;}
 .btn-addInBasket{
 	margin: 0 4px;
 }
+.mm-basket{
+	position: absolute;
+    right: 10px;
+    top: 5px;
+}
+#cssmenu > ul > li.mm-active > a{
+	background: linear-gradient(to bottom, rgb(18, 24, 27) 0%,rgb(37, 60, 93) 100%);
+    background: rgb(37, 60, 93); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(18, 24, 27 ,1) 0%, rgba(37, 60, 93,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(37, 60, 93,1)), color-stop(100%,rgba(73, 80, 90,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(18, 24, 27,1) 0%,rgba(37, 60, 93,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(18, 24, 27,1) 0%,rgba(37, 60, 93,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(18, 24, 27,1) 0%,rgba(37, 60, 93,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgb(18, 24, 27) 0%,rgb(37, 60, 93) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1fa0e4', endColorstr='#1992d1',GradientType=0 ); /* IE6-9 */
+}
 
 /*----------plus-minus----------*/
 
@@ -421,6 +444,7 @@ a:hover, a:focus{text-decoration: none; color: #000;}
 	padding: 4px;
 	transition: border-color 0.5s ease 0s;
 	transition: box-shadow 0.1s ease 0s;
+	display: inline-block
 }
 .delete{
 	margin: 0 0 2px 12px;
@@ -540,18 +564,208 @@ a:hover, a:focus{text-decoration: none; color: #000;}
 }
 
 
+/************
+ MOBILE MENU 
+************/
+.mm { 
+	padding: 0px; /* уберает padding модального окна (мобильное меню)*/
+}
+#cssmenu, #cssmenu ul, #cssmenu ul li, #cssmenu ul li a {
+    border: 0 none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    line-height: 1;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+#cssmenu {
+    color: #ffffff;
+    font-family: Helvetica,Arial,sans-serif;
+    /*width: 200px;*/
+}
+#cssmenu ul ul {
+    display: none;
+}
+#cssmenu > ul > li > a {
+    background: rgb(19, 24, 27); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(18, 23, 26) 0%, rgba(18, 24, 27) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(19, 25, 28)), color-stop(100%,rgb(19, 25, 28))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgb(18, 23, 26) 0%,rgb(18, 24, 27) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgb(18, 23, 26) 0%,rgb(18, 24, 27) 100%); /* Opera 11.10+ */
+    background: -webkit-linear-gradient(top, rgb(18, 23, 26) 0%,rgb(18, 24, 27) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgb(18, 23, 26) 0%,rgb(18, 23, 26) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#12181B', endColorstr='#12181B',GradientType=0 ); /* IE6-9 */
+	border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    border-top: 1px solid #000;
+/*    border-left: 1px solid #1682ba;
+    border-right: 1px solid #1682ba;
+    border-top: 1px solid #1682ba;*/
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 15px 20px;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+    z-index: 2;
+}
+#cssmenu > ul > li > a:hover,
+#cssmenu > ul > li.active > a,
+#cssmenu > ul > li.open > a {
+    background: rgb(73, 80, 90); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(18, 24, 27 ,1) 0%, rgba(73, 80, 90,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(18, 24, 27,1)), color-stop(100%,rgba(73, 80, 90,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(18, 24, 27,1) 0%,rgba(73, 80, 90,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(18, 24, 27,1) 0%,rgba(73, 80, 90,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(18, 24, 27,1) 0%,rgba(73, 80, 90,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgb(18, 24, 27) 0%,rgb(73, 80, 90) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1fa0e4', endColorstr='#1992d1',GradientType=0 ); /* IE6-9 */
+    color: #eeeeee;
+}
+#cssmenu > ul > li.open > a {
+    border-bottom: 1px solid rgb(37, 37, 37);
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset, 0 1px 1px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset, 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+#cssmenu > ul > li:last-child > a,
+#cssmenu > ul > li.last > a {
+    border-bottom: 1px solid rgb(37, 37, 37);
+}
+.holder {
+    height: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 0;
+        height: 100%;
+    width: 50px;
+}
+.holder:after, .holder:before {
+    content: "";
+    display: block;
+    height: 6px;
+    position: absolute;
+    right: 20px;
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+    width: 6px;
+    z-index: 10;
+}
+.holder:after {
+    border-left: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+    top: 17px;
+}
+#cssmenu > ul > li > a:hover > span:after,
+#cssmenu > ul > li.active > a > span:after,
+#cssmenu > ul > li.open > a > span:after {
+    border-color: #eeeeee;
+}
+.holder:before {
+    border-left-color: inherit;
+    border-left-style: solid;
+    border-left-width: 2px;
+    border-top-color: inherit;
+    border-top-style: solid;
+    border-top-width: 2px;
+    top: 18px;
+}
+#cssmenu ul ul li a {
+    background:#49505a;
+    border-bottom: 1px solid #32373e;
+    border-left: 1px solid #32373e;
+    border-right: 1px solid #32373e;
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    color: #eeeeee;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 10px 20px;
+    text-decoration: none;
+    z-index: 1;
+}
+#cssmenu ul ul li:hover > a,
+#cssmenu ul ul li.open > a,
+#cssmenu ul ul li.active > a {
+    background: none repeat scroll 0 0 #424852;
+    color: #ffffff;
+}
+#cssmenu ul ul li:first-child > a {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+#cssmenu ul ul ul li:first-child > a {
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+}
+#cssmenu ul ul ul li a {
+    padding-left: 30px;
+}
+#cssmenu > ul > li > ul > li:last-child > a,
+#cssmenu > ul > li > ul > li.last > a {
+    border-bottom: 0 none;
+}
+#cssmenu > ul > li > ul > li.open:last-child > a,
+#cssmenu > ul > li > ul > li.last.open > a {
+    border-bottom: 1px solid #32373e;
+}
+#cssmenu > ul > li > ul > li.open:last-child > ul > li:last-child > a {
+    border-bottom: 0 none;
+}
+#cssmenu ul ul li.has-sub > a:after {
+    border-left: 2px solid #eeeeee;
+    border-top: 2px solid #eeeeee;
+    content: "";
+    display: block;
+    height: 5px;
+    position: absolute;
+    right: 20px;
+    top: 11.5px;
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+    width: 5px;
+    z-index: 10;
+}
+#cssmenu ul ul li.active > a:after,
+#cssmenu ul ul li.open > a:after,
+#cssmenu ul ul li > a:hover:after {
+    border-color: #ffffff;
+}
+
+.menu-open, .menu-close {
+  	position: fixed;
+  	right: 20px;
+  	top: 16px;
+  	z-index: 1035;
+  	color: #fff;
+  	cursor: pointer;
+  	font-family: 'Open Sans', sans-serif;
+  	font-size: 20px;
+  	text-decoration: none;
+}
+
+
 /***********
    @MEDIA
 ***********/
-.mobile-menu {display: none;}
-
+/*.mobile-menu {display: none;}
+*/
 .logo-text-index{
 	color: #263238;
 	text-shadow: 2px 2px 2px #9d9d9d;
 	font-size: 4em;
 }
 
-@media screen and (max-width: 767px){
+@media screen and (max-width: 767px){ /*скрывает меню , корзину, выравнивает логотип */
 	.navbar{
 		display: none;
 	}
@@ -565,70 +779,17 @@ a:hover, a:focus{text-decoration: none; color: #000;}
 		padding-left: 5px;
 	}
 }
-@media (min-width: 768px){
-	.icon-open{
+
+@media (max-width: 768px){ /*скрывает код на моб. в checkout*/
+	.hide-mobile{
 		display: none;
 	}
 }
-
-
-
-/* MOBILE MENU */
-.icon-open, .icon-close {
-  	position: fixed;
-  	right: 20px;
-  	top: 16px;
-  	z-index: 1100;
-  	color: #fff;
-  	cursor: pointer;
-  	font-family: 'Open Sans', sans-serif;
-  	font-size: 20px;
-  	text-decoration: none;
+@media (min-width: 768px){ 
+	.hide-pc{	
+		display: none; /*скрывает код на pc. в checkout*/
+	}
+	.menu-open{ 
+		display: none; /*скрывает бутерброд на pc. */
+	}
 }
-
-/*.icon-close {
-  	cursor: pointer;
-  	padding-left: 10px;
-  	padding-top: 10px;
-  	padding-bottom: 6px;
-}*/
-
-.menu {
-	padding-top: 70px;
-  	background: #555 url('images/menu-bg.jpg') repeat left top;
-  	right: -285px;
-  	height: 100%;
-  	position: fixed;
-  	width: 285px;
-  	z-index: 1;
-}
-
-.menu ul {
-  	border-top: 1px solid #555;
-  	list-style: none;
-  	margin: 0;
-  	padding: 0;
-}
-
-.menu li {
-	padding-top: 80px;
-	border-bottom: 1px solid #555;
-	font-family: 'Open Sans', sans-serif;
-	line-height: 45px;
-	padding-bottom: 3px;
-	padding-left: 20px;
-	padding-top: 3px;
-}
-
-.menu li:hover {
-  	cursor: pointer;
-  	background-color: #555;
-}
-
-.menu a {
-  	color: #fff;
-  	font-size: 15px;
-  	text-decoration: none;
-}
-
-
