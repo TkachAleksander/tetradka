@@ -7,7 +7,7 @@ class Products extends Controller
     {
         $products = $this->model->getAllProducts();
 
-        require APP . 'view/_templates/header.php';
+        require APP . 'view/_templates/header.php'; 
         require APP . 'view/products/index.php';
         require APP . 'view/_templates/footer.php';
     }
@@ -22,6 +22,7 @@ class Products extends Controller
 
     		$morePhotos = $this->model->getMorePhoto($id_prod);
             $title= $this->model->getTitle();
+            $crumbs = $this->model->getBreadcrumbs('3');
     	}
 
         require APP . 'view/_templates/header.php';

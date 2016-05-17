@@ -18,7 +18,7 @@
                         <div class='thumbnail'>
                             <a class='name-tile' href='<?php echo URL .'products/moreInfo/'. htmlspch($product->id_prod); ?>'>
                                 <p class="text-center"> <?php echo $product->category; ?> <?php echo $product->name; ?>  </p>
-                                <img class='img-responsive img-tile' src='<?php echo URL; ?>img/products/<?php echo $product->nameDir; ?>/<?php echo $product->name_img; ?>'alt = '<?php echo $product->category." ".$product->name; ?>' title='<?php echo $product->category." ".$product->name; ?>'>
+                                <img class='img-responsive img-tile' src='<?php echo URL; ?>img/products/<?php echo $product->nameDir; ?>/<?php echo $product->name_img; ?>' alt = 'Tetradka: <?php echo $product->category." ".$product->name; ?>' title='Tetradka: <?php echo $product->category." ".$product->name; ?>'>
                             </a>
                             <div class='caption'>
                                 <p class='text-center price-tile' id='pr'>

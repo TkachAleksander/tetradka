@@ -7,21 +7,21 @@
     <title><?php echo "Tetradka"; ?></title>
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>css/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>css/jquery.fancybox.css">
     <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>css/bootstrap-select.css">
-  
+
     <!-- JS -->
     <script type="text/javascript" src="<?php echo URL; ?>js/jquery.min.js"></script>
-    <script type="text/javascript" src="<?php echo URL; ?>js/bootstrap.js"></script>
+    <script type="text/javascript" src="<?php echo URL; ?>js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>js/jquery.cookie.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>js/jquery.fancybox.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>js/jquery.fancybox.pack.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>js/tetradka.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>js/jquery.mask.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>js/bootstrap-select.js"></script>
-    <script type="text/javascript" src="<?php echo URL; ?>js/i18n/defaults-ru_RU.js"></script>
+    
 
     <!-- FONTS -->
     <link rel="icon" type="img/ico" href="<?php echo URL; ?>/img/logo/favicon.ico">
@@ -53,29 +53,29 @@
                 <ul class="nav navbar-nav firstMenu style-menu">
                     <li class="dropdown">
                         <a href="#"> Управление товарами <b class="caret caret-menu"></b></a>
-                        <ul class="dropdown-menu style-menu nextLevel">     
-                            <li><a href="<?php echo URL; ?>adminMenu/showAllProducts"> Просмотр </a></li>                       
+                        <ul class="dropdown-menu style-menu nextLevel">
+                            <li><a href="<?php echo URL; ?>adminMenu/showAllProducts"> Просмотр </a></li>
                             <li><a href="<?php echo URL; ?>adminMenu/addProducts"> Добавить </a></li>
                             <li><a href="<?php echo URL; ?>adminMenu/deleteProducts"> Найти / Удалить </a></li>
                             <li><a href="<?php echo URL; ?>adminMenu/databaseControl"> Управление БД </a></li>
-                        </ul>                    
+                        </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#"> Управление заказами <b class="caret caret-menu"></b></a>
                         <ul class="dropdown-menu style-menu nextLevel">
                             <li><a href="<?php echo URL; ?>adminMenu/controlNewOrders"> Новые заказы </a></li>
-                            <li><a href="<?php echo URL; ?>adminMenu/controlPackedOrders"> Заказы на упаковку </a></li>  
-                            <li><a href="<?php echo URL; ?>adminMenu/controlCompletedOrders"> Выполненные заказы </a></li>  
+                            <li><a href="<?php echo URL; ?>adminMenu/controlPackedOrders"> Заказы на упаковку </a></li>
+                            <li><a href="<?php echo URL; ?>adminMenu/controlCompletedOrders"> Выполненные заказы </a></li>
                             <li><a href="<?php echo URL; ?>adminMenu/controlDeliveryOrders"> Заказы на дом </a></li>
                             <li class="admin-divider"></li>
-                            <li><a href="<?php echo URL; ?>adminMenu/controlCancleOrders"> Отмененные заказы </a></li> 
-                            <li><a href="<?php echo URL; ?>adminMenu/controlDeleteOrders"> Удаленные заказы </a></li> 
+                            <li><a href="<?php echo URL; ?>adminMenu/controlCancleOrders"> Отмененные заказы </a></li>
+                            <li><a href="<?php echo URL; ?>adminMenu/controlDeleteOrders"> Удаленные заказы </a></li>
                         </ul>
                     </li>
 
                     <li class="dropdown">
                          <a href="<?php echo URL; ?>eng"> Выход </a>
-                    </li>                
+                    </li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right enter">
@@ -102,31 +102,31 @@
         <table class="table table-bordered table-basket">
           <tr id="th-basket" class="active">
             <th class="text-center">Имя товара</th>
-            <th class="text-center">Фото</th> 
+            <th class="text-center">Фото</th>
             <th class="text-center">Код</th>
             <th class="text-center">Количество</th>
             <th class="text-center">Цена</th>
           </tr>
           <tr>
             <td colspan="3"></td>
-            <td class="text-center"><b>Сумма</b></td> 
+            <td class="text-center"><b>Сумма</b></td>
             <td id="summa-basket" class="text-center">0 грн</td>
           </tr>
         </table>
-      </div> 
+      </div>
       <div class="modal-footer">
         <a href="#"><button type="button" class="btn btn-default btn-sm" onclick="deleteCookie()"><b>Очистить корзину</b></button></a>
         <a href="<?php echo URL; ?>checkout "><button type="button" class="btn btn-success btn-sm" onclick="fillCheckout()" ><b>Оформить заказ</b></button></a>
       </div>
     </div>
-  </div> 
+  </div>
   </div>
 
   <!-- MESSAGE ADD IN BASKET -->
   <div class="addInBasket MarckScript">
     Товар добавлен в корзину
     <div id="off" onclick="offAnimation()">  X  </div>
-  </div> 
+  </div>
 
   <!-- MOBILE HEADER -->
   <nav class="navbar navbar-inverse navbar-fixed-top mobile-menu" role="navigation">
@@ -142,6 +142,6 @@
               <img src="<?php echo URL; ?>public/img/logo/logo.png" class="logo-img img-responsive" height="30" width="50">
             </a>
             <a href="<?php echo URL; ?>" class="logo-text navbar-brand PatuaOne">Tetradka</a>
-          </div> 
+          </div>
     </div>
   </nav>

@@ -6,7 +6,7 @@ class AdminMenu extends Controller
     public function index(){}
 
     public function controlNewOrders(){
-        $is_admin = $this->model->is_admin();
+        $is_admin = $this->model->is_admin(); 
 
         if($is_admin){
             $allOrders = $this->model->getRequestedOrders('обрабатывается');

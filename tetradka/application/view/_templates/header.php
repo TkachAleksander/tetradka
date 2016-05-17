@@ -6,42 +6,39 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
     <title><?php echo $title; ?></title>
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>css/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>css/jquery.fancybox.css">
     <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>css/bootstrap-select.css">
-  
+
     <!-- JS -->
     <script type="text/javascript" src="<?php echo URL; ?>js/jquery.min.js"></script>
-    <script type="text/javascript" src="<?php echo URL; ?>js/bootstrap.js"></script>
+    <script type="text/javascript" src="<?php echo URL; ?>js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>js/jquery.cookie.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>js/jquery.fancybox.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>js/jquery.fancybox.pack.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>js/tetradka.js"></script>
     <script type="text/javascript" src="<?php echo URL; ?>js/jquery.mask.js"></script>
-    <script type="text/javascript" src="<?php echo URL; ?>js/bootstrap-select.js"></script>
-    <script type="text/javascript" src="<?php echo URL; ?>js/i18n/defaults-ru_RU.js"></script>
-    <script type="text/javascript" src="<?php echo URL; ?>js/jquery.mobile.custom.js"></script>
-    <script type="text/javascript" src="<?php echo URL; ?>js/jquery.rotate.js"></script>
+
+
     <!-- FONTS -->
     <link rel="icon" type="img/ico" href="<?php echo URL; ?>/img/logo/favicon.ico">
     <link href='https://fonts.googleapis.com/css?family=Marck+Script&subset=latin,cyrillic' rel='stylesheet' type='text/css'> <!-- Основной -->
     <link href='https://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'> <!-- Лого -->
     <link href='https://fonts.googleapis.com/css?family=Kelly+Slab&subset=latin,cyrillic' rel='stylesheet' type='text/css'> <!-- Цена -->
     <link href='https://fonts.googleapis.com/css?family=Philosopher:400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'> <!-- Кнопки tile -->
-    
+
     <!-- RECAPTCHA -->
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <?php include "other.php";?>
 
-    
+
 </head>
 <body>
-    
+
     <nav class="navbar navbar-inverse navbar-static-top navbar-fixed-top" role="navigation">
         <div class="container-fluid container-fluid-menu MarckScript">
             <div class="navbar-header">
@@ -53,7 +50,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav firstMenu style-menu ">
                     <li class="dropdown">
-                    
+
                     <?php function htmlspch($value) { return htmlspecialchars($value, ENT_QUOTES, 'UTF-8'); } ?>
 
                     <a href="<?php echo URL . 'products/l1/2/'.htmlspch('notebooks');?>" > Тетради <b class="caret caret-menu"></b></a>
@@ -84,8 +81,7 @@
                               </li>
                             </ul>
                           </li>
-                          <li class="cross-over"><a href="<?php echo URL .'products/l2/4/
-                          '. htmlspch('notebooks') .'/'. htmlspch('ofset'); ?>" >Офсет</a>
+                          <li class="cross-over"><a href="<?php echo URL .'products/l2/4/'. htmlspch('notebooks') .'/'. htmlspch('ofset'); ?>" >Офсет</a>
                             <ul class="dropdown-menu style-menu nextLevel">
                               <li class="cross-over"><a href="<?php echo URL .'products/l3/7/'. htmlspch('notebooks') .'/'. htmlspch('ofset') .'/'. htmlspch('cell'); ?>" > Клетка </a>
                                 <ul class="dropdown-menu style-menu nextLevel">
@@ -172,7 +168,3 @@
             </div>
         </div>
     </nav>
-
-
-
-  

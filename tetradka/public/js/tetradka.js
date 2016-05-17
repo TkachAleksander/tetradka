@@ -1,11 +1,11 @@
-$(document).ready(function() {  
+$(document).ready(function() {
 
 	var cookies = $.cookie('basket');
 	if (cookies == null){
 		$.cookie('basket', new Array(), { expires: 7, path:'/'});
-	} 
+	}
 
-	$("a.fancyimage").fancybox(); 
+	$("a.fancyimage").fancybox();
 
 	$('.btn-addInBasket').on('click', function(){
 		$name = $(this).data("name");
@@ -18,7 +18,7 @@ $(document).ready(function() {
 		addInCookie($name, $photo, $code, $price, $category, $dir);
 	});
 
-	jQuery(function($) {$('#phone').mask('+38(999) 999-99-99'); });  
+	jQuery(function($) {$('#phone').mask('+38(999) 999-99-99'); });
 });
 
 function addInCookie(name,photo,code,price,category,dir){
@@ -28,7 +28,7 @@ function addInCookie(name,photo,code,price,category,dir){
 
 		for (var i = 0; i < Object.keys(tovar).length; i++){
 			if (tovar[i].code == code){
-				
+
 				tovar[i].amount = parseFloat(tovar[i].amount) + 1;
 				$.cookie('basket',JSON.stringify(tovar),{ expires: 7, path:'/'});
 				refillBasket();
@@ -38,19 +38,19 @@ function addInCookie(name,photo,code,price,category,dir){
 		var tovar;
 		tovar.push({'name':name,'photo':photo,'code':code,'price':price,'category':category,'dir':dir,'amount':'1'});
 		$.cookie('basket',JSON.stringify(tovar),{ expires: 7, path:'/'});
-	} else { 
+	} else {
 		var tovar;
 		tovar = [{'name':name,'photo':photo,'code':code,'price':price,'category':category,'dir':dir,'amount':'1'}];
 		$.cookie('basket',JSON.stringify(tovar),{ expires: 7, path:'/'});
 	}
-	refillBasket(); // перезаполнить 
+	refillBasket(); // перезаполнить
 }
 
 function refillBasket(){
 
 	$('.td-basket').remove();
 	$('#summa-basket').html(0);
-	
+
 	var cookies = $.cookie('basket');
 	if(cookies != 0){
 		var tovar = JSON.parse($.cookie('basket'));
@@ -86,7 +86,7 @@ function deleteCookieNotReload(){
 
 function basketPlus(code){
 	var cookies = $.cookie('basket');
-	
+
 	 if (cookies != 0){
 		var tovar = JSON.parse($.cookie('basket'));
 
@@ -103,14 +103,14 @@ function basketPlus(code){
 
 function basketMinus(code){
 	var cookies = $.cookie('basket');
-	
+
 	if (cookies != 0){
 		var tovar = JSON.parse($.cookie('basket'));
 
 		for (var i=0; i < Object.keys(tovar).length; i++){
 			if (code == tovar[i].code){
 				tovar[i].amount = parseFloat(tovar[i].amount) - 1;
-				
+
 				if (tovar[i].amount != 0){
 					$.cookie('basket', JSON.stringify(tovar),{ expires: 7, path:'/'});
 					refillBasket();
@@ -166,7 +166,7 @@ function inputCheckoutName(){
 	var value = str.match(pattern);
 
 	if ( $('.inputCheckoutName').val() != value ){
-		
+
 		$('.checkoutNameError').html('Пожалуйста введите имя используя кириллицу.');
 		$('.inputCheckoutName').val('');
 	} else {
@@ -185,16 +185,16 @@ function inputCheckoutLName(){
 		$('.inputCheckoutLName').val('');
 	} else {
 		$('.checkoutLNameError').empty();
-	}	
+	}
 }
 
-function newOrder(){ 
+function newOrder(){
 	$name = $('.inputCheckoutName').val();
 	$lname = $('.inputCheckoutLName').val();
 	$phone = $('#phone').val();
 
 	if ($name.length >= 3 && $lname.length >=3 && $phone.length == 18){
-		$.cookie('newOrder', new Array(), { expires: 1, path:'/'}); 
+		$.cookie('newOrder', new Array(), { expires: 1, path:'/'});
 	}
 }
 
@@ -235,25 +235,25 @@ function moreAboutOrder(id)
 		url: "/adminMenu/moreAboutOrder",
 		data: "id=" + id,
 		dataType: "json",
-		success: handleData	
+		success: handleData
 			// console.log(id);
 	});
 }
 function handleData(data){
 	$('.table-order-tr').remove();
 	for(var i = 0; i < data.length; i++){
-		$('.table-order').append(
+		$('.table-adm-more').append(
 			  	'<tr class="table-order-tr">'+
-  	  	  			'<td class="text-center">'+data[i].id+'</td>'+
-  	  	  			'<td>'+data[i].name+'</td>'+
+  	   	  			'<td>'+data[i].name+'</td>'+
   	  	  			'<td class="text-center">'+data[i].photo+'</td>'+
   	  	  			'<td class="text-center">'+data[i].code+'</td>'+
   	  	  			'<td class="text-center">'+data[i].amount+'</td>'+
   	  	  			'<td class="text-center">'+data[i].price+'</td>'+
+  	  	  			'<td class="text-center"><a href="http://tetradka.sumy.ua/products/moreInfo/'+data[i].code+'" target="_blank"><img class="img-responsive img-more-admin" src="/img/admin/glyphicons-30-notes-2.png"></a></td>'+
   	  	  		'</tr>'
-		);	
+		);
 	}
-	
+
 }
 
 function changeStatusOther(id,status)
@@ -281,7 +281,7 @@ function sendInOrderTable(id,iz,v){
 
 		}
 	});
-		location.reload();	
+		location.reload();
 }
 
 /*
@@ -289,7 +289,7 @@ function sendInOrderTable(id,iz,v){
 */
 
 /* функция вызывается в файле bootstrap-select.js 477 строка*/
-function getCharacterisrics(){ 
+function getCharacterisrics(){
 	var id = $('#getCategory').val();
 
 	if (id != 0){
@@ -301,7 +301,7 @@ function getCharacterisrics(){
 			success: function(data){
 
 				$('.addCharact').empty();
-				$('.addCaption').empty(); 
+				$('.addCaption').empty();
 
 				for(var i = 0; i < data.length; i++){
 					$('.addCharact').append(
@@ -315,7 +315,7 @@ function getCharacterisrics(){
 							'<input type="text" class="form-control" name="captions['+data[i].id_charact+']" required>'+
 					'	</div></p>');
 					}
-			}	
+			}
 		});
 	}
 }
@@ -324,7 +324,7 @@ function getCharacterisrics(){
 ** deleteProducts --------------------------------------------------------------------------------------------
 */
 
-function showProduct(id_prod, bool){ 
+function showProduct(id_prod, bool){
 	$.ajax({
 		type: "POST",
 		url: "/adminMenu/showProduct",
@@ -334,32 +334,12 @@ function showProduct(id_prod, bool){
 
 		}
 	});
-		location.reload();	
+		location.reload();
 }
 
 /*
 ** mobile menu --------------------------------------------------------------------------------------------
 */
-
-$(document).ready(function() {
-    $('.child').hide();
-    $('.open').click(function() { $('.open').next().slideToggle("normal"); });
-
-var bool = 0;
-    $('.rotate180').rotate({bind:{
-	click: function(){
-		if (bool == 0){
-		    $(this).rotate({animateTo:180,duration:400});
-		    bool = 1;
-		} else {
-			$(this).rotate({animateTo:0});
-			bool = 0;
-		}
-	}
-	}});
-
-});
-
 $(document).ready(function () {
     $('#cssmenu li.has-sub > a').on('click', function(){
         $(this).removeAttr('href');
@@ -378,6 +358,6 @@ $(document).ready(function () {
             element.siblings('li').find('ul').slideUp();
         }
     });
- 
+
     $('#cssmenu>ul>li.has-sub>a').append('<span class="holder"></span>');
 });

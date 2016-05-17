@@ -6,12 +6,12 @@
             <div class="products col-lg-offset-1 col-lg-10 floor-content">
 
                 <div class="row row-checkout">
-                    <div class="col-lg-7 col-md-7"> 
+                    <div class="col-lg-7 col-md-7">
                         <table class="table table-bordered table-checkout">
                             <tr id="th-checkout" class="active">
                                 <th class="text-center">Имя товара</th>
-                                <th class="text-center">Фото</th> 
-                                <th class="text-center hide-mobile ">Код</th>  
+                                <th class="text-center">Фото</th>
+                                <th class="text-center hide-mobile ">Код</th>
                                 <th class="text-center hide-pc">Кол.</th>
                                 <th class="text-center hide-mobile">Количество</th>
                                 <th class="text-center">Цена</th>
@@ -21,10 +21,10 @@
                                 <td colspan="2" class="hide-pc"></td>
                                 <td class="text-center"><b>Сумма</b></td>
                                 <td id="summa-checkout" class="text-center">0 грн</td>
-                            </tr>                 
+                            </tr>
                         </table>
                     </div>
-        
+
                     <div class="col-lg-offset-1 col-md-offset-1  col-lg-4 col-md-4 ">
                         <form role="form" method="POST" action="<?php echo URL; ?>checkout/sendOrder">
                             <div class="form-group">
@@ -62,12 +62,12 @@
             <div class="products col-lg-offset-1 col-lg-10 floor-content">
 
                 <div class="row row-checkout">
-                    <div class="col-lg-7"> 
+                    <div class="col-lg-7">
                         <table class="table table-bordered table-checkout">
                             <tr id="th-checkout" class="active">
                                 <td class="text-center">Имя товара</td>
-                                <td class="text-center">Фото</td> 
-                                <td class="text-center">Код</td>  
+                                <td class="text-center">Фото</td>
+                                <td class="text-center hide-mobile">Код</td>
                                 <td class="text-center">Количество</td>
                                 <td class="text-center">Цена</td>
                             </tr>
@@ -78,7 +78,7 @@
                                 <td colspan="3"></td>
                                 <td class="text-center">Сумма</td>
                                 <td id="summa-checkout" class="text-center">0 грн</td>
-                            </tr>    -->              
+                            </tr>    -->
                         </table>
                     </div>
 

@@ -51,8 +51,8 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
  * This is the place where you define your database credentials, database type etc.
  */
 define('DB_TYPE', 'mysql');
-define('DB_HOST', '127.0.0.1');
+define('DB_HOST', 'tetradka.mysql.ukraine.com.ua');
 define('DB_NAME', 'tetradka_db');
-define('DB_USER', 'mysql');
-define('DB_PASS', 'mysql');
+define('DB_USER', 'tetradka_db');
+define('DB_PASS', 'dLphETFC');
 define('DB_CHARSET', 'utf8');

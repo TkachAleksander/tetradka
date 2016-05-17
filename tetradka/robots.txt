@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: 
+Sitemap: http://tetradka.sumy.ua/sitemap.html
