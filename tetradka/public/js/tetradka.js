@@ -62,7 +62,7 @@ function refillBasket(){
 									'<td class="text-center basket-code hide-mobile" data-basCode="'+tovar[i].code+'">'+tovar[i].code+
 									'<td class="text-center">'+
 										'<img class="img-responsive minus" onclick="basketMinus('+tovar[i].code+')" src="/img/basket/remove.png">'+
-										'<input class="count-product text-center" value="'+tovar[i].amount+'">'+
+										'<input readonly class="count-product text-center" value="'+tovar[i].amount+'">'+
 										'<img class="img-responsive plus" onclick="basketPlus('+tovar[i].code+')" src="/img/basket/add.png">'+
 										'<img class="img-responsive delete" onclick="basketDelete('+tovar[i].code+')" src="/img/basket/delete.png">'+
 									'<td class="sum text-center">'+tovar[i].price);
@@ -157,7 +157,6 @@ function basketDelete(code){
 				sum = $('#summa-checkout').text(parseFloat(sum).toFixed(2));
 			}
 		}
-
 	}
 
 function inputCheckoutName(){
@@ -198,7 +197,49 @@ function newOrder(){
 	}
 }
 
+ function plusDelivery(){
+ 	if ($('.delivery').hasClass('active')){
+ 		$('.del-tr').remove();
+ 		$('.tr-checkout').before('<tr class="del-tr">'+
+ 								 	'<td class="text-center" colspan="3"></td>'+
+ 								 	'<td class="text-center"><b>Доставка</b></td>'+
+ 								 	'<td class="text-center">35.00</td>'+
+ 								 '</tr>');
+ 		summaCheckout();
+ 	} else {
+ 		$('.del-tr').remove();
+ 		var sum = parseFloat($('#summa-checkout').text()) - parseFloat(35);
+ 		parseFloat($('#summa-checkout').text(sum.toFixed(2))) ;
+ 	}
+ }
+	
+function summaCheckout(){
+	var cookies = $.cookie('basket');
+	var sum = 0;
+		if (cookies != 0){
+
+			var tovar = JSON.parse($.cookie('basket'));
+			for (var i=0; i<Object.keys(tovar).length; i++){
+				sum = parseFloat(sum) + (parseFloat(tovar[i].price) * parseFloat(tovar[i].amount));
+			}
+				sum += parseFloat(35);
+				sum = $('#summa-checkout').text(parseFloat(sum).toFixed(2));
+		}
+}
+
 function deleteNewOrder(){ $.cookie('newOrder', new Array(), { expires: -1, path:'/'}); }
+
+$(document).ready(function(){
+    $('.tabs_menu a').click(function(e) {
+        e.preventDefault();
+        $('.tabs_menu .active').removeClass('active');
+        $(this).addClass('active');
+        var tab = $(this).attr('href');
+        $('.tab').not(tab).css({'display':'none'});
+        $(tab).fadeIn(400);
+    });
+});
+
 /*
 ** Анимация AddInBasket --------------------------------------------------------------------------------------------
 */

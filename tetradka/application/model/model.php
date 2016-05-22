@@ -261,6 +261,8 @@ class Model
 
 
     function checkCookieBasket(){
+		$this->title = $this->tetradka ." оформление заказа";
+		
         $cookie = $_COOKIE['basket'];
         if($cookie == null || $cookie == '%5B%5D'){
             return false;

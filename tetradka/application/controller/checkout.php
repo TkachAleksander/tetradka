@@ -6,6 +6,8 @@ class Checkout extends Controller
     public function index()
     {
         $checkBasket = $this->model->checkCookieBasket();
+		$title= $this->model->getTitle();
+		
         require APP . 'view/_templates/header.php';
         require APP . 'view/checkout/index.php';
         require APP . 'view/_templates/footer.php';

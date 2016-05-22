@@ -16,7 +16,7 @@
                                 <th class="text-center hide-mobile">Количество</th>
                                 <th class="text-center">Цена</th>
                             </tr>
-                            <tr>
+                            <tr class="tr-checkout">
                                 <td colspan="3" class="hide-mobile"></td>
                                 <td colspan="2" class="hide-pc"></td>
                                 <td class="text-center"><b>Сумма</b></td>
@@ -38,10 +38,25 @@
                                 <label> Номер телефона для подтвержения заказа </label>
                                 <input required type="text" name="phone" class="form-control" id="phone" placeholder="+38(095)111-22-33"  >
                             </div>
+                            
+                            <label> Доставка </label>
+                            <div class="tabs_box">
+                                <ul class="tabs_menu">
+                                    <li><a href="#tab1" class="delivery active" onclick="plusDelivery()">Самовывоз</a></li>
+                                    <li><a href="#tab2" onclick="plusDelivery()">Курьер (35 грн)</a></li>
+                                </ul>
+                                    <div class="tab" id="tab1">
+                                        <p> ул.Черниговская 12</p>
+                                    </div>
+                                    <div class="tab" id="tab2">
+                                        <p><input required type="text" name="delivery" class="form-control input-deliery" placeholder="Ваш адрес"></p>
+                                    </div>
+                            </div>
 
                             <div class="g-recaptcha" data-sitekey="6LdaEB4TAAAAAODS86yvVGhD5fDiPxhXjD31qw68"></div>
 
                             <button type="submit" class="btn btn-success btn-checkout pull-left" onclick="newOrder()"><b> Заказать </b></button>
+
                         </form>
                         <a href="<?php echo URL; ?>"><button class="btn btn-default btn-checkout pull-right"> Продолжить покупки </button></a>
                     </div>
@@ -74,17 +89,11 @@
                             <tr>
                                 <td colspan="5" class="text-center text-size-18"><b> Ваша корзина пуста </b></td>
                             </tr>
-<!--                             <tr>
-                                <td colspan="3"></td>
-                                <td class="text-center">Сумма</td>
-                                <td id="summa-checkout" class="text-center">0 грн</td>
-                            </tr>    -->
                         </table>
                     </div>
 
                     <div class=" col-lg-5 text-center">
                         <p class="margin-40">
-                            <!-- <span class="text-size-20 MarckScript "> Корзина пуста </span> -->
                             <a href="<?php echo URL; ?>">
                                 <button class="btn btn-success"><b> Но это никогда не поздно исправить :) </b></button>
                             </a>
@@ -98,3 +107,8 @@
 </div>
 
 <?php } ?>
+<!-- <div class="col-lg-12" style="background-color: #263238; height: 600px;">
+    <div class="row" style="margin-top: 200px;">
+        <p class=" PatuaOne text-center" style="font-size: 80px; text-shadow: 1px 1px 5px #ddd;"> <img src="http://tetradka/public/img/logo/logo.png" style="height: 100px; "> Tetradka </p>
+    </div>
+</div> -->
